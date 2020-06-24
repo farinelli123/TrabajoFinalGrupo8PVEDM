@@ -15,7 +15,6 @@ public class RegistroTracking implements Serializable{
 	private Localidad localidad;
 	private String detalleLugarRegistro;
 	public RegistroTracking() {
-		
 	}
 	public RegistroTracking(LocalDateTime fechaHora, Vehiculo vehiculo, List<Tripulante> tripulante,
 			Localidad localidad, String detalleLugarRegistro) {

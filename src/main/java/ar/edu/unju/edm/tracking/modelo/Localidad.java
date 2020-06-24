@@ -10,7 +10,6 @@ public class Localidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String nombre;
 	public Localidad() {
-		
 	}
 	public Localidad(String nombre) {
 		super();

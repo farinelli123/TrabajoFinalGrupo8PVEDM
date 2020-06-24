@@ -13,7 +13,6 @@ public class Tripulante implements Serializable {
 	private String nombres;
 	private String nacionalidad;
 	public Tripulante() {
-		
 	}
 	public Tripulante(String documento, String apellido, String nombres, String nacionalidad) {
 		super();

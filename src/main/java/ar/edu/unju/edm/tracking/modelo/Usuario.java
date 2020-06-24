@@ -13,7 +13,6 @@ public class Usuario implements Serializable  {
 	private String apellidoReal;
 	private String tipoUsuario;
 	public Usuario() {
-		
 	}
 	public Usuario(String nombreUsuario, String password, String nombreReal, String apellidoReal, String tipoUsuario) {
 		super();

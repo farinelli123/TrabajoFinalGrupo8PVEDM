@@ -16,7 +16,6 @@ public class Vehiculo implements Serializable {
 	private String numeroChasis;
 	private String numeroMotor;
 	public Vehiculo() {
-		
 	}
 	public Vehiculo(String patente, String color, String titular, String marca, String modelo, String tipo,
 			String numeroChasis, String numeroMotor) {
