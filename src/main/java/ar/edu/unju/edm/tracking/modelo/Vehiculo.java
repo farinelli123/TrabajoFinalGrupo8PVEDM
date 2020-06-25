@@ -2,18 +2,37 @@ package ar.edu.unju.edm.tracking.modelo;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
 public class Vehiculo implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO,generator="native")
+	@GenericGenerator(name="native",strategy="native")
 	private String patente;
+	@Column
 	private String color;
+	@Column
 	private String titular;
+	@Column
 	private String marca;
+	@Column
 	private String modelo;
+	@Column
 	private String tipo;
+	@Column
 	private String numeroChasis;
+	@Column
 	private String numeroMotor;
 	public Vehiculo() {
 	}
