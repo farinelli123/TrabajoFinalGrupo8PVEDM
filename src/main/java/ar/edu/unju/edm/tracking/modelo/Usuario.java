@@ -20,6 +20,8 @@ public class Usuario implements Serializable  {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO,generator="native")
 	@GenericGenerator(name="native",strategy="native")
+	private Integer idUsuario;
+	@Column
 	private String nombreUsuario;
 	@Column
 	private String password;
@@ -32,13 +34,21 @@ public class Usuario implements Serializable  {
 	
 	public Usuario() {
 	}
-	public Usuario(String nombreUsuario, String password, String nombreReal, String apellidoReal, String tipoUsuario) {
+	public Usuario(String nombreUsuario, String password, String nombreReal, String apellidoReal, String tipoUsuario, Integer idUsuario) {
 		super();
 		this.nombreUsuario = nombreUsuario;
 		this.password = password;
 		this.nombreReal = nombreReal;
 		this.apellidoReal = apellidoReal;
 		this.tipoUsuario = tipoUsuario;
+		this.idUsuario = idUsuario;
+	}
+	
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 	public String getNombreUsuario() {
 		return nombreUsuario;
@@ -72,14 +82,15 @@ public class Usuario implements Serializable  {
 	}
 	@Override
 	public String toString() {
-		return "Usuario [nombreUsuario=" + nombreUsuario + ", nombreReal=" + nombreReal + ", apellidoReal="
-				+ apellidoReal + "]";
+		return "Usuario [idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", nombreReal=" + nombreReal
+				+ ", apellidoReal=" + apellidoReal + ", tipoUsuario=" + tipoUsuario + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((apellidoReal == null) ? 0 : apellidoReal.hashCode());
+		result = prime * result + ((idUsuario == null) ? 0 : idUsuario.hashCode());
 		result = prime * result + ((nombreReal == null) ? 0 : nombreReal.hashCode());
 		result = prime * result + ((nombreUsuario == null) ? 0 : nombreUsuario.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
@@ -99,6 +110,11 @@ public class Usuario implements Serializable  {
 			if (other.apellidoReal != null)
 				return false;
 		} else if (!apellidoReal.equals(other.apellidoReal))
+			return false;
+		if (idUsuario == null) {
+			if (other.idUsuario != null)
+				return false;
+		} else if (!idUsuario.equals(other.idUsuario))
 			return false;
 		if (nombreReal == null) {
 			if (other.nombreReal != null)

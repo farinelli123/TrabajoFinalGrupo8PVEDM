@@ -19,6 +19,8 @@ public class Vehiculo implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO,generator="native")
 	@GenericGenerator(name="native",strategy="native")
+	private Integer idVehiculo;
+	@Column
 	private String patente;
 	@Column
 	private String color;
@@ -37,7 +39,7 @@ public class Vehiculo implements Serializable {
 	public Vehiculo() {
 	}
 	public Vehiculo(String patente, String color, String titular, String marca, String modelo, String tipo,
-			String numeroChasis, String numeroMotor) {
+			String numeroChasis, String numeroMotor, Integer idVehiculo) {
 		super();
 		this.patente = patente;
 		this.color = color;
@@ -47,6 +49,14 @@ public class Vehiculo implements Serializable {
 		this.tipo = tipo;
 		this.numeroChasis = numeroChasis;
 		this.numeroMotor = numeroMotor;
+		this.idVehiculo = idVehiculo;
+	}
+	
+	public Integer getIdVehiculo() {
+		return idVehiculo;
+	}
+	public void setIdVehiculo(Integer idVehiculo) {
+		this.idVehiculo = idVehiculo;
 	}
 	public String getPatente() {
 		return patente;
@@ -98,15 +108,16 @@ public class Vehiculo implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Vehiculo [patente=" + patente + ", color=" + color + ", titular=" + titular + ", marca=" + marca
-				+ ", modelo=" + modelo + ", tipo=" + tipo + ", numeroChasis=" + numeroChasis + ", numeroMotor="
-				+ numeroMotor + "]";
+		return "Vehiculo [idVehiculo=" + idVehiculo + ", patente=" + patente + ", color=" + color + ", titular="
+				+ titular + ", marca=" + marca + ", modelo=" + modelo + ", tipo=" + tipo + ", numeroChasis="
+				+ numeroChasis + ", numeroMotor=" + numeroMotor + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((color == null) ? 0 : color.hashCode());
+		result = prime * result + ((idVehiculo == null) ? 0 : idVehiculo.hashCode());
 		result = prime * result + ((marca == null) ? 0 : marca.hashCode());
 		result = prime * result + ((modelo == null) ? 0 : modelo.hashCode());
 		result = prime * result + ((numeroChasis == null) ? 0 : numeroChasis.hashCode());
@@ -129,6 +140,11 @@ public class Vehiculo implements Serializable {
 			if (other.color != null)
 				return false;
 		} else if (!color.equals(other.color))
+			return false;
+		if (idVehiculo == null) {
+			if (other.idVehiculo != null)
+				return false;
+		} else if (!idVehiculo.equals(other.idVehiculo))
 			return false;
 		if (marca == null) {
 			if (other.marca != null)
