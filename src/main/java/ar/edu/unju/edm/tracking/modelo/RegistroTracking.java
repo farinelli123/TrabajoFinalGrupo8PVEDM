@@ -4,16 +4,34 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
 public class RegistroTracking implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO,generator="native")
+	@GenericGenerator(name="native",strategy="native")
 	private LocalDateTime fechaHora;
+	@Column
 	private Vehiculo vehiculo;
+	@Column
 	private List<Tripulante> tripulante;
+	@Column
 	private Localidad localidad;
+	@Column
 	private String detalleLugarRegistro;
+	
 	public RegistroTracking() {
 	}
 	public RegistroTracking(LocalDateTime fechaHora, Vehiculo vehiculo, List<Tripulante> tripulante,

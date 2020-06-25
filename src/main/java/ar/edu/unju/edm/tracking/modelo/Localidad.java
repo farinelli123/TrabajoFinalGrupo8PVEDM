@@ -2,13 +2,25 @@ package ar.edu.unju.edm.tracking.modelo;
 
 import java.io.Serializable;
 
-public class Localidad implements Serializable {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-	/**
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+public class Localidad implements Serializable {
+     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO,generator="native")
+	@GenericGenerator(name="native",strategy="native")
 	private String nombre;
+	
 	public Localidad() {
 	}
 	public Localidad(String nombre) {

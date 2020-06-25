@@ -2,16 +2,34 @@ package ar.edu.unju.edm.tracking.modelo;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
 public class Usuario implements Serializable  {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO,generator="native")
+	@GenericGenerator(name="native",strategy="native")
 	private String nombreUsuario;
+	@Column
 	private String password;
+	@Column
 	private String nombreReal;
+	@Column
 	private String apellidoReal;
+	@Column
 	private String tipoUsuario;
+	
 	public Usuario() {
 	}
 	public Usuario(String nombreUsuario, String password, String nombreReal, String apellidoReal, String tipoUsuario) {
