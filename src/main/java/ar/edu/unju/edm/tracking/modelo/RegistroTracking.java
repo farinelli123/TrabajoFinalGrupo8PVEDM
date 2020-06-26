@@ -4,11 +4,16 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -27,11 +32,16 @@ public class RegistroTracking implements Serializable{
 	@Column
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private LocalDateTime fechaHora;
-	@Column
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "vehiculo_id")
 	private Vehiculo vehiculo;
-	@Column
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "registrotracking_tripulante", 
+	 joinColumns = @JoinColumn(name = "registrotracking_id"), 
+	 inverseJoinColumns = @JoinColumn(name = "tripulante_id"))
 	private List<Tripulante> tripulante;
-	@Column
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "localidad_id")
 	private Localidad localidad;
 	@Column
 	private String detalleLugarRegistro;
