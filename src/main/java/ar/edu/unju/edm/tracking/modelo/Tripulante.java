@@ -20,6 +20,8 @@ public class Tripulante implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO,generator="native")
 	@GenericGenerator(name="native",strategy="native")
+	private Integer idTripulante;
+	@Column
 	private String documento;
 	@Column
 	private String apellido;
@@ -30,12 +32,19 @@ public class Tripulante implements Serializable {
 	
 	public Tripulante() {
 	}
-	public Tripulante(String documento, String apellido, String nombres, String nacionalidad) {
+	public Tripulante(String documento, String apellido, String nombres, String nacionalidad, Integer idTripulante) {
 		super();
 		this.documento = documento;
 		this.apellido = apellido;
 		this.nombres = nombres;
 		this.nacionalidad = nacionalidad;
+		this.idTripulante = idTripulante;
+	}
+	public Integer getIdTripulante() {
+		return idTripulante;
+	}
+	public void setIdTripulante(Integer idTripulante) {
+		this.idTripulante = idTripulante;
 	}
 	public String getDocumento() {
 		return documento;
@@ -63,8 +72,8 @@ public class Tripulante implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Tripulante [documento=" + documento + ", apellido=" + apellido + ", nombres=" + nombres
-				+ ", nacionalidad=" + nacionalidad + "]";
+		return "Tripulante [idTripulante=" + idTripulante + ", documento=" + documento + ", apellido=" + apellido
+				+ ", nombres=" + nombres + ", nacionalidad=" + nacionalidad + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -72,6 +81,7 @@ public class Tripulante implements Serializable {
 		int result = 1;
 		result = prime * result + ((apellido == null) ? 0 : apellido.hashCode());
 		result = prime * result + ((documento == null) ? 0 : documento.hashCode());
+		result = prime * result + ((idTripulante == null) ? 0 : idTripulante.hashCode());
 		result = prime * result + ((nacionalidad == null) ? 0 : nacionalidad.hashCode());
 		result = prime * result + ((nombres == null) ? 0 : nombres.hashCode());
 		return result;
@@ -94,6 +104,11 @@ public class Tripulante implements Serializable {
 			if (other.documento != null)
 				return false;
 		} else if (!documento.equals(other.documento))
+			return false;
+		if (idTripulante == null) {
+			if (other.idTripulante != null)
+				return false;
+		} else if (!idTripulante.equals(other.idTripulante))
 			return false;
 		if (nacionalidad == null) {
 			if (other.nacionalidad != null)

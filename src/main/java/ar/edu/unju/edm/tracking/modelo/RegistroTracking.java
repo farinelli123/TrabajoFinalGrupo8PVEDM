@@ -4,13 +4,19 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class RegistroTracking implements Serializable{
@@ -22,12 +28,20 @@ public class RegistroTracking implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO,generator="native")
 	@GenericGenerator(name="native",strategy="native")
+	private Integer registroId;
+	@Column
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private LocalDateTime fechaHora;
-	@Column
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "vehiculo_id")
 	private Vehiculo vehiculo;
-	@Column
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "registrotracking_tripulante", 
+	 joinColumns = @JoinColumn(name = "registrotracking_id"), 
+	 inverseJoinColumns = @JoinColumn(name = "tripulante_id"))
 	private List<Tripulante> tripulante;
-	@Column
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "localidad_id")
 	private Localidad localidad;
 	@Column
 	private String detalleLugarRegistro;
@@ -35,13 +49,21 @@ public class RegistroTracking implements Serializable{
 	public RegistroTracking() {
 	}
 	public RegistroTracking(LocalDateTime fechaHora, Vehiculo vehiculo, List<Tripulante> tripulante,
-			Localidad localidad, String detalleLugarRegistro) {
+			Localidad localidad, String detalleLugarRegistro, Integer registroId) {
 		super();
+		this.registroId = registroId;
 		this.fechaHora = fechaHora;
 		this.vehiculo = vehiculo;
 		this.tripulante = tripulante;
 		this.localidad = localidad;
 		this.detalleLugarRegistro = detalleLugarRegistro;
+	}
+	
+	public Integer getRegistroId() {
+		return registroId;
+	}
+	public void setRegistroId(Integer registroId) {
+		this.registroId = registroId;
 	}
 	public LocalDateTime getFechaHora() {
 		return fechaHora;
@@ -75,8 +97,9 @@ public class RegistroTracking implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "RegistroTracking [fechaHora=" + fechaHora + ", vehiculo=" + vehiculo + ", tripulante=" + tripulante
-				+ ", localidad=" + localidad + ", detalleLugarRegistro=" + detalleLugarRegistro + "]";
+		return "RegistroTracking [registroId=" + registroId + ", fechaHora=" + fechaHora + ", vehiculo=" + vehiculo
+				+ ", tripulante=" + tripulante + ", localidad=" + localidad + ", detalleLugarRegistro="
+				+ detalleLugarRegistro + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -85,6 +108,7 @@ public class RegistroTracking implements Serializable{
 		result = prime * result + ((detalleLugarRegistro == null) ? 0 : detalleLugarRegistro.hashCode());
 		result = prime * result + ((fechaHora == null) ? 0 : fechaHora.hashCode());
 		result = prime * result + ((localidad == null) ? 0 : localidad.hashCode());
+		result = prime * result + ((registroId == null) ? 0 : registroId.hashCode());
 		result = prime * result + ((tripulante == null) ? 0 : tripulante.hashCode());
 		result = prime * result + ((vehiculo == null) ? 0 : vehiculo.hashCode());
 		return result;
@@ -112,6 +136,11 @@ public class RegistroTracking implements Serializable{
 			if (other.localidad != null)
 				return false;
 		} else if (!localidad.equals(other.localidad))
+			return false;
+		if (registroId == null) {
+			if (other.registroId != null)
+				return false;
+		} else if (!registroId.equals(other.registroId))
 			return false;
 		if (tripulante == null) {
 			if (other.tripulante != null)

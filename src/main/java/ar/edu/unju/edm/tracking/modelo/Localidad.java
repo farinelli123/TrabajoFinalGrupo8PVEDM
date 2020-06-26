@@ -2,6 +2,7 @@ package ar.edu.unju.edm.tracking.modelo;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,13 +20,16 @@ public class Localidad implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO,generator="native")
 	@GenericGenerator(name="native",strategy="native")
+	private Integer idLocalidad;
+	@Column
 	private String nombre;
 	
 	public Localidad() {
 	}
-	public Localidad(String nombre) {
+	public Localidad(String nombre, Integer idLocalidad) {
 		super();
 		this.nombre = nombre;
+		this.idLocalidad = idLocalidad;
 	}
 	public String getNombre() {
 		return nombre;
@@ -33,14 +37,21 @@ public class Localidad implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	public Integer getIdLocalidad() {
+		return idLocalidad;
+	}
+	public void setIdLocalidad(Integer idLocalidad) {
+		this.idLocalidad = idLocalidad;
+	}
 	@Override
 	public String toString() {
-		return "Localidad [nombre=" + nombre + "]";
+		return "Localidad [idLocalidad=" + idLocalidad + ", nombre=" + nombre + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((idLocalidad == null) ? 0 : idLocalidad.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		return result;
 	}
@@ -53,6 +64,11 @@ public class Localidad implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Localidad other = (Localidad) obj;
+		if (idLocalidad == null) {
+			if (other.idLocalidad != null)
+				return false;
+		} else if (!idLocalidad.equals(other.idLocalidad))
+			return false;
 		if (nombre == null) {
 			if (other.nombre != null)
 				return false;
