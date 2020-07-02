@@ -1,4 +1,4 @@
-package ar.edu.unju.edm.controller;
+package ar.edu.unju.edm.tracking.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ public class VehiculoController {
 	@GetMapping("/nuevoVehiculo")
 	public String agregar(Model model) {
 		model.addAttribute("vehiculoD" ,new Vehiculo());
-		return "vehiculoForm";
+		return "vehiculo";
 	}
 
 	@PostMapping("/save")

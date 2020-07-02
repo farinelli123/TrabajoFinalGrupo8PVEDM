@@ -1,4 +1,4 @@
-package ar.edu.unju.edm.controller;
+package ar.edu.unju.edm.tracking.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ public class UsuarioController {
 	@GetMapping("/nuevoUsuario")
 	public String agregarU(Model model) {
 		model.addAttribute("usuarioD",new Usuario());
-		return "usuarioForm";
+		return "usuario";
 	}
 	
 	@PostMapping("/saveUsuario")
