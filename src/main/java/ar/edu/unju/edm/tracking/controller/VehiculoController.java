@@ -19,13 +19,13 @@ public class VehiculoController {
 	IVehiculoService vehiculoService;
 
 	@GetMapping("/nuevoVehiculo")
-	public String agregar(Model model) {
+	public String agregarVehiculo(Model model) {
 		model.addAttribute("vehiculoD" ,new Vehiculo());
-		return "vehiculo";
+		return "FormVehiculo";
 	}
 
-	@PostMapping("/save")
-	public String guardar(@ModelAttribute Vehiculo vehiculo, Model model) {
+	@PostMapping("/saveVehiculo")
+	public String guardarVehiculo(@ModelAttribute Vehiculo vehiculo, Model model) {
 		vehiculoService.guardarVehiculo(vehiculo);
 		return "redirect:/nuevoVehiculo"; 
 	}

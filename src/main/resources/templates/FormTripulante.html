@@ -1,53 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <head>
-    <meta charset="ISO-8859-1">
-    <title>FORMULARIO - SEMANA 1 - GRUPO 8</title>
-    <!-- Linkeo a CSS -->
-    <link  rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<title>Formulario de Tripulante</title>
+<!-- Linkeo a CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 
-<body class="container">
-    <h1>GESTION DE TRIPULANTES</h1>
-    <form>
-        <div class="form-row">
-            <div class="form-group col-sm-6">
-                <label for="inputNombre">Nombre</label>
-                <input type="text" class="form-control" id="inputNombre">
-            </div>
-            <div class="form-group col-sm-6">
-                <label for="inputApellido">Apellido</label>
-                <input type="text" class="form-control" id="inputApellido">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputDNI">Documento</label>
-            <input type="number" class="form-control" id="inputDNI" placeholder="Ingrese aquí su DNI">
-        </div>
-        <div class="form-group">
-            <label for="inputNacionalidad">Nacionalidad</label>
-            <select id="inputState" class="form-control">
-                <option selected>Elige una nacionalidad...</option>
-                <option value="AR">selected>Argentina</option>
-                <option value="BO">Bolivia</option>
-                <option value="BR">Brasil</option>
-                <option value="CL">Chile</option>
-                <option value="CO">Colombia</option>
-                <option value="EC">Ecuador</option>
-                <option value="UY">Uruguay</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                    ¿Los datos son correctos?
-                </label>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Regístrese</button>
-    </form>
-</body>
+<body>
+	<div class="container">
+		<br>
+		<h1>GESTION DE TRIPULANTES</h1>
+		<form th:object=${tripulanteD} th:action="@{/saveTripulante}"
+			method="post">
+			<div class="form-group row">
+				<label for="inputEmail4">Documento</label> <input type="number"
+					class="form-control" id="inputEmail4"
+					placeholder="Ingrese Numero de Documento" th:field="*{documento}"
+					required>
+			</div>
+			<div class="form-group row">
+				<label for="inputApellido">Apellido</label> <input type="text"
+					class="form-control" id="inputApellido"
+					placeholder="Ingrese Apellido" th:field="*{apellido}" required>
+			</div>
 
-</html>
+			<div class="form-group row">
+				<label for="inputNombre">Nombre</label> <input type="text"
+					class="form-control" id="inputNombre" placeholder="Ingrese Nombres"
+					th:field="*{nombres}" required>
+			</div>
+			<div class="form-group row">
+				<label for="inputNacionalidad">Nacionalidad</label> <input
+					type="text" class="form-control" id="inputNacionalidad"
+					placeholder="Ingrese Nacionalidad" th:field="*{nacionalidad}"
+					required>
+			</div>
+			<div class="form-group">
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" id="gridCheck"
+						required> <label class="form-check-label" for="gridCheck">
+						Â¿Aceptas los tÃ©rminos y condiciones? </label>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Registrarse</button>
+		</form>
+		<br>
+	</div>

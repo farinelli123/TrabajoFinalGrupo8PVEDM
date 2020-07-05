@@ -21,7 +21,7 @@ public class TripulanteController {
 	@GetMapping("/nuevoTripulante")
 	public String agregarTripulante(Model model) {
 		model.addAttribute("tripulanteD", new Tripulante());
-		return "tripulante";
+		return "FormTripulante";
 	}
 
 	@PostMapping("/saveTripulante")

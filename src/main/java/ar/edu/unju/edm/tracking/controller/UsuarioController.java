@@ -19,13 +19,13 @@ public class UsuarioController {
 	IUsuarioService usuarioService;
 
 	@GetMapping("/nuevoUsuario")
-	public String agregarU(Model model) {
+	public String agregarUsuario(Model model) {
 		model.addAttribute("usuarioD",new Usuario());
-		return "usuario";
+		return "FormUsuario";
 	}
 	
 	@PostMapping("/saveUsuario")
-	public String guardarU(@ModelAttribute Usuario usuario, Model model) {
+	public String guardarUsuario(@ModelAttribute Usuario usuario, Model model) {
 		usuarioService.guardarUsuario(usuario);
 		return "redirect:/nuevoUsuario";
 	} 

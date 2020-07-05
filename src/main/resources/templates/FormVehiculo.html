@@ -1,64 +1,91 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <head>
-    <meta charset="ISO-8859-1">
-    <title>FORMULARIO - SEMANA 1 - GRUPO 8</title>
-    <!-- Linkeo a CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<title>Formulario de Vehiculo</title>
+<!-- CSS only -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
 </head>
-
-<body class="container">
-    <h1>GESTION DE VEHICULOS</h1>
-    <form>
-        <div class="form-row">
-            <div class="form-group col-sm-6">
-                <label for="inputEmail4">Titular</label>
-                <input type="Titular" class="form-control" id="inputEmail4">
-            </div>
-            <div class="form-group col-sm-6">
-                <label for="inputIdVehiculo">IdVehiculo</label>
-                <input type="Password" class="form-control" id="inputPassword4">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputPatente">Patente</label>
-            <input type="text" class="form-control" id="inputPatente" placeholder="123 KGH 467...">
-        </div>
-        <div class="form-group">
-            <label for="inputColor">Color</label>
-            <input type="text" class="form-control" id="inputColor" placeholder="Rojo, Amarillo, Negro...">
-        </div>
-        <div class="form-row">
-            <div class="form-group col-sm-6">
-                <label for="inputMarca">Marca</label>
-                <input type="text" class="form-control" id="inputMarca">
-            </div>
-            <div class="form-group col-sm-4">
-                <label for="inputModelo">Modelo</label>
-                <input type="text" class="form-control" id="inputMarca">
-            </div>
-            <div class="form-group col-sm-2">
-                <label for="inputTipo">Tipo</label>
-                <input type="text" class="form-control" id="inputTipo">
-            </div>
-        </div>
-        <div class="form-row">
-            <label for="inputNumerodeChasis">Numero de Chasis</label>
-            <input type="text" class="form-control" id="inputNumerodeChasis">
-        </div>
-        <div class="form-row">
-            <label for="inputNumerodeMotor">Numero de Motor</label>
-            <input type="text" class="form-control" id="inputNumerodeMotor">
-        </div>
-        <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                    ¿Los datos son correctos?
-                </label>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Regístrese</button>
-    </form>
+<body>
+	<div class="container">
+	<br>
+	<h1>GESTION DE VEHICULOS</h1>
+	<form th:object=${vehiculoD} th:action="@{/saveVehiculo}" method="post">
+		<div class="form-group">
+			<label for="inputTitular">Titular</label> <input type="text"
+				class="form-control" id="inputEmail4"
+				placeholder="Ingrese nombre del titular del vehiculo" th:field="*{titular}"
+				required>
+		</div>
+		<div class="form-group">
+			<label for="inputPatente">Patente</label> <input type="text"
+				class="form-control" id="inputPatente"
+				placeholder="Ingrese la patente del vehiculo" th:field="*{patente}"
+				required>
+		</div>
+		<div class="form-group">
+			<label for="inputColor">Color</label> <input type="text"
+				class="form-control" id="inputColor"
+				placeholder="Ingrese color del vehiculo" th:field="*{color}"
+				required>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-sm-6">
+				<label for="inputMarca">Marca</label> <input type="text"
+					class="form-control" id="inputMarca"
+					placeholder="Ingrese marca del vehiculo" th:field="*{marca}"
+					required>
+			</div>
+			<div class="form-group col-sm-4">
+				<label for="inputModelo">Modelo</label> <input type="text"
+					class="form-control" id="inputMarca"
+					placeholder="Ingrese modelo del vehiculo" th:field="*{modelo}"
+					required>
+			</div>
+			<div class="form-group col-sm-2">
+				<label for="inputTipo">Tipo</label> <input type="text"
+					class="form-control" id="inputTipo" placeholder="Tipo de vehiculo"
+					th:field="*{tipo}" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputNumerodeChasis">Numero de Chasis</label> <input
+				type="text" class="form-control" id="inputNumerodeChasis"
+				placeholder="Ingrese cod. de serie de chasis" th:field="*{numeroChasis}"
+				required>
+		</div>
+		<div class="form-group">
+			<label for="inputNumerodeMotor">Numero de Motor</label> <input
+				type="text" class="form-control" id="inputNumerodeMotor"
+				placeholder="Ingresa cod. de serie de motor" th:field="*{numeroMotor}"
+				required>
+		</div>
+		<div class="form-group">
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" id="gridCheck" required>
+				<label class="form-check-label" for="gridCheck"> ¿Aceptas
+					terminos y condiciones? </label>
+			</div>
+		</div>
+		<button type="submit" value="Guardar" class="btn btn-primary">Guardar</button>
+	</form>
+	</div>
+	<br>
+	<!-- JS, Popper.js, and jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+		crossorigin="anonymous"></script>
 </body>
 </html>
