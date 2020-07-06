@@ -1,5 +1,7 @@
 package ar.edu.unju.edm.tracking.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,14 @@ public class TripulanteController {
 	@PostMapping("/saveTripulante")
 	public String guardarTripulante(@ModelAttribute Tripulante tripulante, Model model) {
 		tripulanteService.guardarTripulante(tripulante);
-		return "redirect:/nuevoTripulante";
+		return "redirect:/listarTripulante";
 	}
+	@GetMapping("/listarTripulante")
+	public String listarTripulante(Model model) {
+		model.addAttribute("tripulantes", tripulanteService.listar());
+		return "VistaTripulante";
+		/*Iterable<Tripulante>tripulante=tripulanteService.listar();
+		model.addAttribute("tripulante", tripulante);
+		return "VistaTripulante";*/
+	} 
 }

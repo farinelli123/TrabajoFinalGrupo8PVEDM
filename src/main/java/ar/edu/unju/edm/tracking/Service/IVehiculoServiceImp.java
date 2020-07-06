@@ -15,5 +15,10 @@ public class IVehiculoServiceImp implements IVehiculoService {
 		// TODO Auto-generated method stub
 		iVehiculoRepository.save(unVehiculo);
 	}
+	@Override
+	public Iterable<Vehiculo> listar() {
+		// TODO Auto-generated method stub
+		return iVehiculoRepository.findAll();
+	}
 
 }

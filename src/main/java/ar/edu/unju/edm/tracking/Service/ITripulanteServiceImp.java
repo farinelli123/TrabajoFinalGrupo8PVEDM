@@ -1,5 +1,7 @@
 package ar.edu.unju.edm.tracking.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,11 @@ public class ITripulanteServiceImp implements ITripulanteService {
 	public void guardarTripulante(Tripulante unTripulante) {
 		// TODO Auto-generated method stub
 		iTripulanteRepository.save(unTripulante);
+	}
+
+	@Override
+	public Iterable<Tripulante> listar() {
+		// TODO Auto-generated method stub
+		return iTripulanteRepository.findAll();
 	}
 }

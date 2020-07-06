@@ -27,6 +27,11 @@ public class VehiculoController {
 	@PostMapping("/saveVehiculo")
 	public String guardarVehiculo(@ModelAttribute Vehiculo vehiculo, Model model) {
 		vehiculoService.guardarVehiculo(vehiculo);
-		return "redirect:/nuevoVehiculo"; 
+		return "redirect:/listarVehiculo"; 
+	}
+	@GetMapping("/listarVehiculo")
+	public String listarVehiculo(Model model) {
+		model.addAttribute("vehiculos", vehiculoService.listar());
+		return "VistaVehiculo";
 	}
 }

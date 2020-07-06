@@ -13,4 +13,9 @@ public class IUsuarioServiceImp implements IUsuarioService {
 	public void guardarUsuario(Usuario unUsuario) {
 		iUsuarioRepository.save(unUsuario);
 	}
+	@Override
+	public Iterable<Usuario> listar() {
+		// TODO Auto-generated method stub
+		return iUsuarioRepository.findAll();
+	}
 }

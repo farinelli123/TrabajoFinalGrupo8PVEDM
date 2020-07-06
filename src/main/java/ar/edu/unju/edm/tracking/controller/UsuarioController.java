@@ -27,6 +27,11 @@ public class UsuarioController {
 	@PostMapping("/saveUsuario")
 	public String guardarUsuario(@ModelAttribute Usuario usuario, Model model) {
 		usuarioService.guardarUsuario(usuario);
-		return "redirect:/nuevoUsuario";
-	} 
+		return "redirect:/listarUsuario";
+	}
+	@GetMapping("/listarUsuario")
+	public String listarUsuario(Model model) {
+		model.addAttribute("usuarios", usuarioService.listar());
+		return "VistaUsuario";
+	}
 }
