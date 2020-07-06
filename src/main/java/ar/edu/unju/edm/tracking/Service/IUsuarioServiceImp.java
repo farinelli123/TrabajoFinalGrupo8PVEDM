@@ -18,4 +18,9 @@ public class IUsuarioServiceImp implements IUsuarioService {
 		// TODO Auto-generated method stub
 		return iUsuarioRepository.findAll();
 	}
+	@Override
+	public void delete(Integer id) {
+		// TODO Auto-generated method stub
+		iUsuarioRepository.deleteById(id);
+	}
 }

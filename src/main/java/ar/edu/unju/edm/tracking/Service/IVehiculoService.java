@@ -8,4 +8,5 @@ import ar.edu.unju.edm.tracking.modelo.Vehiculo;
 public interface IVehiculoService {
 	public void guardarVehiculo(Vehiculo unVehiculo);
 	public Iterable<Vehiculo> listar();
+	public void delete(Integer id);
 }

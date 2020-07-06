@@ -8,5 +8,5 @@ import ar.edu.unju.edm.tracking.modelo.Usuario;
 public interface IUsuarioService {
 	public void guardarUsuario(Usuario unUsuario);
 	public Iterable<Usuario> listar();
-
+	public void delete(Integer id);
 }

@@ -20,5 +20,11 @@ public class IVehiculoServiceImp implements IVehiculoService {
 		// TODO Auto-generated method stub
 		return iVehiculoRepository.findAll();
 	}
+	@Override
+	public void delete(Integer id) {
+		// TODO Auto-generated method stub
+		iVehiculoRepository.deleteById(id);
+		
+	}
 
 }
