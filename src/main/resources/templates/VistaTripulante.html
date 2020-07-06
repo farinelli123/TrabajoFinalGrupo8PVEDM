@@ -35,8 +35,8 @@
 			      <td th:text = "${tripulante.nombres}"></td>
 			      <td th:text = "${tripulante.nacionalidad}"></td>
 			      <td>
-			      	<a class="btn btn-warning">Modificar</a>
-			      	<a  th:onclick="eliminart([[${tripulante.idTripulante}]])" class="btn btn-danger">Eliminar</a>
+			      	<a th:href="@{/editarTripulante/}+${tripulante.idTripulante}" class="btn btn-warning">Modificar</a>
+			      	<a th:onclick="eliminart([[${tripulante.idTripulante}]])" class="btn btn-danger">Eliminar</a>
 			      </td>
 			    </tr>
 			  </tbody>

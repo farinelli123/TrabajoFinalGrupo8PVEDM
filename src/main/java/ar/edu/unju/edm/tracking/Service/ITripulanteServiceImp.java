@@ -1,5 +1,7 @@
 package ar.edu.unju.edm.tracking.Service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +28,11 @@ public class ITripulanteServiceImp implements ITripulanteService {
 	public void delete(Integer id) {
 		// TODO Auto-generated method stub
 		iTripulanteRepository.deleteById(id);
+	}
+
+	@Override
+	public Optional<Tripulante> listarId(int id) {
+		// TODO Auto-generated method stub
+		return iTripulanteRepository.findById(id);
 	}
 }
