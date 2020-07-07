@@ -1,6 +1,7 @@
 package ar.edu.unju.edm.tracking.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.tracking.modelo.Usuario;
@@ -11,6 +12,9 @@ public class IUsuarioServiceImp implements IUsuarioService {
 	IUsuarioRepository iUsuarioRepository;
 	@Override
 	public void guardarUsuario(Usuario unUsuario) {
+		String pw= unUsuario.getPassword();
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
+		unUsuario.setPassword(bCryptPasswordEncoder.encode(pw));
 		iUsuarioRepository.save(unUsuario);
 	}
 	@Override

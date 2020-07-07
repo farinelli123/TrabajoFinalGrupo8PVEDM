@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -10,13 +10,13 @@
     <!-- CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/css/estilos.css">
+    <link rel="stylesheet" th:href="@{css/estilos.css}">
 </head>
 
 <body>
     <!--Comienza header-->
     <header>
-        <img class="logo" src="../static/img/logo-header.png" alt="logo" height="75" width="550">
+        <img class="logo" th:src="@{/img/logo-header.png}" alt="logo" height="75" width="550">
         <nav>
             <ul class="nav__links">
                 <li><a href="#">Tripulante</a></li>
@@ -24,7 +24,15 @@
                 <li><a href="#">Vehiculo</a></li>
             </ul>
         </nav>
-        <a class="cta" href="#"><button>Contacto</button></a>
+        <ul class="navbar-nav mt-2 mt-lg-0">
+				<li class="nav-item">
+				<a class="btn btn-outline-dark" href="#" th:href="@{/logout}"> 
+				<span th:text="${#authentication.getPrincipal().getUsername()}">
+				</span> - 
+				<span> Salir  </span><span class="float-right">
+				<i class="fas fa-sign-out-alt"></i></span></a>				   	
+				</li>
+				</ul>
     </header>
     <!--Termina header-->
     <!--Contenido de body-->

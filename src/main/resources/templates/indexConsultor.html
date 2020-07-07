@@ -1,63 +1,81 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultor</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/css/estilos.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultor</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{css/estilos.css}">
 </head>
 
 <body>
-    <!--Comienza header-->
-    <header>
-        <img class="logo" src="../static/img/logo-header.png" alt="logo" height="75" width="550">
-        <nav>
-            <ul class="nav__links">
-                <li><a href="#">Tripulante</a></li>
-                <li><a href="#">Usuario</a></li>
-                <li><a href="#">Vehiculo</a></li>
-            </ul>
-        </nav>
-        <a class="cta" href="#"><button>Contacto</button></a>
-    </header>
-    <!--Termina header-->
-    <!--Contenido de body-->
-    <div style="background:#24252A !important" class="jumbotron">
-        <h1 class="display-4">BIENVENIDO CONSULTOR</h1>
-        <p class="lead">A través de esta plataforma usted, el usuario consultor, podrá realizar la búsqueda de vehículos por localidad, un listado de recorrido por tripulante y un listado por recorrido por patente.</p>
-        <br>
-        
-        <hr class="my-4">
-        <p class="lead">Seleccione una de las dos opciones y la pagina lo redireccionará a sus respectivos formularios.</p>    
-        <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Buscar vehiculo por localidad</a>
-            <a class="btn btn-success btn-lg" href="#" role="button">Listado por tripulante</a>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Listado por patente</a>
-        </p>
-        <p>Le pedimos porfavor que respete las normas de bio-seguridad que le sean asignadas. Entre todos vamos a parar al bicho.</p>
-      </div>
-    <!--Termina contenido de body-->
+	<!--Comienza header-->
+	<header>
+		<img class="logo" th:src="@{/img/logo-header.png}" alt="logo"
+			height="75" width="550">
+		<nav>
+			<ul class="nav__links">
+				<li><a href="#">Tripulante</a></li>
+				<li><a href="#">Usuario</a></li>
+				<li><a href="#">Vehiculo</a></li>
+			</ul>
+		</nav>
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			<li class="nav-item"><a class="btn btn-outline-dark" href="#"
+				th:href="@{/logout}"> <span
+					th:text="${#authentication.getPrincipal().getUsername()}"> </span>
+					- <span> Salir </span><span class="float-right"> <i
+						class="fas fa-sign-out-alt"></i></span></a></li>
+		</ul>
+	</header>
+	<!--Termina header-->
+	<!--Contenido de body-->
+	<div style="background: #24252A !important" class="jumbotron">
+		<h1 class="display-4">BIENVENIDO CONSULTOR</h1>
+		<p class="lead">A través de esta plataforma usted, el usuario
+			consultor, podrá realizar la búsqueda de vehículos por localidad, un
+			listado de recorrido por tripulante y un listado por recorrido por
+			patente.</p>
+		<br>
 
-    <!--Comienza footer-->
+		<hr class="my-4">
+		<p class="lead">Seleccione una de las dos opciones y la pagina lo
+			redireccionará a sus respectivos formularios.</p>
+		<p class="lead">
+			<a class="btn btn-primary btn-lg" href="#" role="button">Buscar
+				vehiculo por localidad</a> <a class="btn btn-success btn-lg" href="#"
+				role="button">Listado por tripulante</a> <a
+				class="btn btn-primary btn-lg" href="#" role="button">Listado
+				por patente</a>
+		</p>
+		<p>Le pedimos porfavor que respete las normas de bio-seguridad que
+			le sean asignadas. Entre todos vamos a parar al bicho.</p>
+	</div>
+	<!--Termina contenido de body-->
 
-    <!--Termina footer-->
+	<!--Comienza footer-->
 
-    <!-- JS Bootstrap-->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
+	<!--Termina footer-->
+
+	<!-- JS Bootstrap-->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+		crossorigin="anonymous"></script>
 
 </body>
 

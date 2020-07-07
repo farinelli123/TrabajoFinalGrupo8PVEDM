@@ -50,7 +50,7 @@ public class TripulanteController {
 	}
 	@GetMapping("/editarTripulante/{id}")
 	public String editarTripulante(@PathVariable int id, Model model) {
-		Optional<Tripulante>tripulante=tripulanteService.listarId(id);
+		Optional<Tripulante> tripulante=tripulanteService.listarId(id);
 		model.addAttribute("tripulanteD", tripulante);
 		return "FormTripulante";
 	}
