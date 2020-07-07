@@ -4,20 +4,40 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Formulario de usuario</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
 	crossorigin="anonymous">
+<link th:href="@{/static/css/estilos.css}" rel="stylesheet" />
 </head>
 <body>
+	<!--Comienza header-->
+	<header>
+		<img class="logo" src="../static/img/logo-header.png" alt="logo"
+			height="75" width="550">
+		<nav>
+			<ul class="nav__links">
+				<li><a href="#">Tripulante</a></li>
+				<li><a href="#">Usuario</a></li>
+				<li><a href="#">Vehiculo</a></li>
+			</ul>
+		</nav>
+		<a class="cta" href="#"><button>Contacto</button></a>
+	</header>
+	<!--Termina header-->
+	
+	<!--Comienza cuerpo de body-->
 	<div class="container">
 		<br>
 		<h1>GESTION DE USUARIOS</h1>
 		<br>
 		<form th:object=${usuarioD} th:action="@{/saveUsuario}" method="post">
 			<div class="form-group row">
-				<label for="nombre" class="col-sm-3 col-form-label">Ingrese su
-					Usuario</label>
+				<label for="nombre" class="col-sm-3 col-form-label">Ingrese
+					su Usuario</label>
 				<div class="col-sm-9">
 					<input class="form-control" type="text" id="nombre"
 						placeholder="Ingrese su usuario o correo electrónico"
@@ -28,19 +48,21 @@
 				<label for="contraseña" class="col-sm-3 col-form-label">Contraseña</label>
 				<div class="col-sm-9">
 					<input type="password" class="form-control" id="contraseña"
-						placeholder="Ingrese su contraseña" th:field="*{password}" required>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="nombreReal" class="col-sm-3 col-form-label">Nombre </label>
-				<div class="col-sm-9">
-					<input class="form-control" type="text" id="nombreReal"
-						placeholder="Ingrese su nombre" th:field="*{nombreReal}"
+						placeholder="Ingrese su contraseña" th:field="*{password}"
 						required>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="apellidoReal" class="col-sm-3 col-form-label">Apellido </label>
+				<label for="nombreReal" class="col-sm-3 col-form-label">Nombre
+				</label>
+				<div class="col-sm-9">
+					<input class="form-control" type="text" id="nombreReal"
+						placeholder="Ingrese su nombre" th:field="*{nombreReal}" required>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="apellidoReal" class="col-sm-3 col-form-label">Apellido
+				</label>
 				<div class="col-sm-9">
 					<input class="form-control" type="text" id="apellidoReal"
 						placeholder="Ingrese su apellido" th:field="*{apellidoReal}"
@@ -81,7 +103,13 @@
 				Usuario</button>
 		</form>
 	</div>
-	<br>
+	<!--Termina contenido de body-->
+	
+	<!--Comienza footer-->
+
+	<!--Termina footer-->
+	
+	<!--JS Bootstrap-->
 	<script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
