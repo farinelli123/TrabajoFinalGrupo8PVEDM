@@ -40,7 +40,11 @@
 		<br>
 		<h1>GESTION DE USUARIOS</h1>
 		<br>
-		<form th:object=${usuarioD} th:action="@{/saveUsuario}" method="post">
+		<form th:object=${usuarioD} th:action="${editMode}?@{/editarUsuario}" th:action@{/saveUsuario} method="post" >
+		    <input type="hidden" id="identificadorUsuarioHiddenInput" th:field="*{IdUsuario}"/>
+		    <input class="form-control" type=hidden th:field="${usuarioD.idUsuario}" th:if="${editMode}">
+		    <input class="form-control" type=hidden th:field="${usuarioD.password}" th:if="${editMode}">
+		    <input class="form-control" type=hidden th:field="${usuarioD.tipoUsuario}" th:if="${editMode}">
 			<div class="form-group row">
 				<label for="nombre" class="col-sm-3 col-form-label">Ingrese
 					su Usuario</label>

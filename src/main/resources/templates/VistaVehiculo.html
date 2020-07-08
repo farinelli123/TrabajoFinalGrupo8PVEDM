@@ -67,7 +67,7 @@
 			      <td th:text = "${vehiculo.numeroChasis}"></td>
 			      <td th:text = "${vehiculo.numeroMotor}"></td>
 			      <td>
-			      	<a class="btn btn-warning">Modificar</a>
+			      	<a th:href="@{/editarVehiculo/}+${vehiculo.idVehiculo}" class="btn btn-warning">Modificar</a>
 			      	<a th:onclick="eliminarv([[${vehiculo.idVehiculo}]])" class="btn btn-danger">Eliminar</a>
 			      </td>
 			    </tr>

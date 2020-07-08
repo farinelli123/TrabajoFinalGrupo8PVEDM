@@ -26,5 +26,15 @@ public class IVehiculoServiceImp implements IVehiculoService {
 		iVehiculoRepository.deleteById(id);
 		
 	}
-
+	@Override
+	public Vehiculo editar(Integer id) throws Exception {
+		Vehiculo vehiculoG=listarId(id);
+		return vehiculoG;
+	}
+	
+	@Override
+	public Vehiculo listarId(Integer id) throws Exception{
+		// TODO Auto-generated method stub
+		return iVehiculoRepository.findById(id).orElseThrow(()-> new Exception("Error"));
+	}
 }

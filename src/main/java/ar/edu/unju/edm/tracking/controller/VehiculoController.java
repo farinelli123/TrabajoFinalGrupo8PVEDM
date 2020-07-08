@@ -21,7 +21,9 @@ public class VehiculoController {
 
 	@GetMapping("/nuevoVehiculo")
 	public String agregarVehiculo(Model model) {
-		model.addAttribute("vehiculoD" ,new Vehiculo());
+		if (!model.containsAttribute("vehiculoD")){
+			model.addAttribute("vehiculoD", new Vehiculo());
+		}
 		return "FormVehiculo";
 	}
 
@@ -39,5 +41,12 @@ public class VehiculoController {
 	public String eliminar(@PathVariable int id,Model model) {
 		vehiculoService.delete(id);
 		return "redirect:/listarVehiculo";
+	}
+	@GetMapping("/editarVehiculo/{id}")
+	public String editarTripulante(Model model, @PathVariable(name="id") Integer id) throws Exception {
+		Vehiculo vehiculo1=vehiculoService.editar(id);
+		System.out.println(vehiculo1.getIdVehiculo());
+		model.addAttribute("vehiculoD", vehiculo1);
+		return agregarVehiculo(model);
 	}
 }

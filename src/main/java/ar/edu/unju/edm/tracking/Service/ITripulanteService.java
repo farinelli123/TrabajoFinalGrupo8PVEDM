@@ -1,7 +1,5 @@
 package ar.edu.unju.edm.tracking.Service;
 
-import java.util.Optional;
-
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.tracking.modelo.Tripulante;
@@ -11,5 +9,6 @@ public interface ITripulanteService  {
 	public void guardarTripulante(Tripulante unTripulante);
 	public Iterable<Tripulante> listar();
 	public void delete(Integer id);
-	public Optional<Tripulante> listarId(int id);
+	public Tripulante editar(Integer id) throws Exception;
+	public Tripulante listarId(Integer id) throws Exception;
 }

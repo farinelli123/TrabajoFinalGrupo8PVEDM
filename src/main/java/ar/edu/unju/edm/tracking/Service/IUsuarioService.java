@@ -9,4 +9,6 @@ public interface IUsuarioService {
 	public void guardarUsuario(Usuario unUsuario);
 	public Iterable<Usuario> listar();
 	public void delete(Integer id);
+	public Usuario editar(Integer id) throws Exception;
+	public Usuario listarId(Integer id) throws Exception;
 }

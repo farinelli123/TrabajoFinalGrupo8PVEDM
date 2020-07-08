@@ -27,4 +27,15 @@ public class IUsuarioServiceImp implements IUsuarioService {
 		// TODO Auto-generated method stub
 		iUsuarioRepository.deleteById(id);
 	}
+	@Override
+	public Usuario editar(Integer id) throws Exception {
+		Usuario usuarioG=listarId(id);
+		return usuarioG;
+	}
+	
+	@Override
+	public Usuario listarId(Integer id) throws Exception{
+		// TODO Auto-generated method stub
+		return iUsuarioRepository.findById(id).orElseThrow(()-> new Exception("Error"));
+	}
 }

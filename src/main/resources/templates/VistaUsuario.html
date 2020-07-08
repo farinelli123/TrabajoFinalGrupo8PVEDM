@@ -61,7 +61,9 @@
 						<td th:text="${usuario.nombreReal}"></td>
 						<td th:text="${usuario.apellidoReal}"></td>
 						<td th:text="${usuario.tipoUsuario}"></td>
-						<td><a class="btn btn-warning">Modificar</a> <a
+						<td>
+						<a th:href="@{/editarUsuario/}+${usuario.idUsuario}" class="btn btn-warning">Modificar</a>
+						<a
 							th:onclick="eliminaru([[${usuario.idUsuario}]])"
 							class="btn btn-danger">Eliminar</a></td>
 					</tr>

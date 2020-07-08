@@ -42,6 +42,7 @@
 		<h1>GESTION DE TRIPULANTES</h1>
 		<form th:object=${tripulanteD} th:action="@{/saveTripulante}"
 			method="post">
+			<input type="hidden" id="identificadorUsuarioHiddenInput" th:field="*{IdTripulante}"/>
 			<div class="form-group row">
 				<label for="inputEmail4">Documento</label> <input type="number"
 					class="form-control" id="inputEmail4"

@@ -1,7 +1,5 @@
 package ar.edu.unju.edm.tracking.controller;
 
-import java.util.Optional;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +23,10 @@ public class TripulanteController {
 
 	@GetMapping("/nuevoTripulante")
 	public String agregarTripulante(Model model) {
-		model.addAttribute("tripulanteD", new Tripulante());
-		return "FormTripulante";
+		if (!model.containsAttribute("tripulanteD")){
+			model.addAttribute("tripulanteD", new Tripulante());
+		}
+		return "FormUsuario";
 	}
 
 	@PostMapping("/saveTripulante")
@@ -49,9 +49,10 @@ public class TripulanteController {
 		return "redirect:/listarTripulante";
 	}
 	@GetMapping("/editarTripulante/{id}")
-	public String editarTripulante(@PathVariable int id, Model model) {
-		Optional<Tripulante> tripulante=tripulanteService.listarId(id);
-		model.addAttribute("tripulanteD", tripulante);
-		return "FormTripulante";
+	public String editarTripulante(Model model, @PathVariable(name="id") Integer id) throws Exception {
+		Tripulante tripulante1=tripulanteService.editar(id);
+		System.out.println(tripulante1.getIdTripulante());
+		model.addAttribute("tripulanteD", tripulante1);
+		return agregarTripulante(model);
 	}
 }

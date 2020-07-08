@@ -1,7 +1,5 @@
 package ar.edu.unju.edm.tracking.Service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +29,14 @@ public class ITripulanteServiceImp implements ITripulanteService {
 	}
 
 	@Override
-	public Optional<Tripulante> listarId(int id) {
+	public Tripulante editar(Integer id) throws Exception {
+		Tripulante tripulanteG=listarId(id);
+		return tripulanteG;
+	}
+	
+	@Override
+	public Tripulante listarId(Integer id) throws Exception{
 		// TODO Auto-generated method stub
-		return iTripulanteRepository.findById(id);
+		return iTripulanteRepository.findById(id).orElseThrow(()-> new Exception("Error"));
 	}
 }

@@ -21,7 +21,9 @@ public class UsuarioController {
 
 	@GetMapping("/nuevoUsuario")
 	public String agregarUsuario(Model model) {
-		model.addAttribute("usuarioD",new Usuario());
+		if (!model.containsAttribute("usuarioD")){
+			model.addAttribute("usuarioD", new Usuario());
+		}
 		return "FormUsuario";
 	}
 	
@@ -39,5 +41,13 @@ public class UsuarioController {
 	public String eliminar(@PathVariable int id,Model model) {
 		usuarioService.delete(id);
 		return "redirect:/listarUsuario";
+	}
+	@GetMapping("/editarUsuario/{id}")
+	public String editarUsuario(Model model, @PathVariable(name="id") Integer id) throws Exception {
+		Usuario usuario1=usuarioService.editar(id);
+		System.out.println(usuario1.getIdUsuario());
+		model.addAttribute("usuarioD", usuario1);
+		model.addAttribute("editMode", "true");
+		return agregarUsuario(model);
 	}
 }

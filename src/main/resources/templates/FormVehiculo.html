@@ -41,6 +41,7 @@
 		<h1>GESTION DE VEHICULOS</h1>
 		<form th:object=${vehiculoD} th:action="@{/saveVehiculo}"
 			method="post">
+			<input type="hidden" id="identificadorUsuarioHiddenInput" th:field="*{IdVehiculo}"/>
 			<div class="form-group">
 				<label for="inputTitular">Titular</label> <input type="text"
 					class="form-control" id="inputEmail4"
