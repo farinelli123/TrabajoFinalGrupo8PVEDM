@@ -11,7 +11,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
 	crossorigin="anonymous">
-<link th:href="@{/static/css/estilos.css}" rel="stylesheet" />
+<link th:href="@{css/estilos.css}" rel="stylesheet" />
 </head>
 <body>
 	<!--Comienza header-->
@@ -25,7 +25,10 @@
 				<li><a href="#">Vehiculo</a></li>
 			</ul>
 		</nav>
-		<a class="cta" href="#"><button>Contacto</button></a>
+		<a class="cta" href="#" th:href="@{/logout}"><button>
+				<span th:text=${#authentication.getPrincipal().getUsername()}></span>
+				- Salir
+			</button></a>
 	</header>
 	<!--Termina header-->
 	<!--Comienza cuerpo de body-->
@@ -33,7 +36,7 @@
 		<br>
 		<h1>LISTADO DE LOCALIDADES</h1>
 
-		<br> <a th:href="@{/nuevoTripulante}" class="btn btn-primary">
+		<br> <a th:href="@{/nuevaLocalidad}" class="btn btn-primary">
 			Agregar nueva </a> <br> <br>
 		<div class="table-responsive">
 			<table class="table table-striped">
@@ -45,13 +48,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="tripulante:${tripulantes}">
-						<td th:text="${tripulante.idTripulante}"></td>
-						<td th:text="${tripulante.nombres}"></td>
+					<tr th:each="localidad:${localidades}">
+						<td th:text="${localidad.idLocalidad}"></td>
+						<td th:text="${localidad.nombre}"></td>
 						<td><a
-							th:href="@{/editarTripulante/}+${tripulante.idTripulante}"
+							th:href="@{/editarLocalidad/}+${localidad.idLocalidad}"
 							class="btn btn-warning">Modificar</a> <a
-							th:onclick="eliminart([[${tripulante.idTripulante}]])"
+							th:onclick="eliminarl([[${localidad.idLocalidad}]])"
 							class="btn btn-danger">Eliminar</a></td>
 					</tr>
 				</tbody>
@@ -59,11 +62,11 @@
 		</div>
 	</div>
 	<!--Termina contenido de body-->
-	
+
 	<!--Comienza footer-->
 
 	<!--Termina footer-->
-	
+
 	<!--JS Bootstrap-->
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<script

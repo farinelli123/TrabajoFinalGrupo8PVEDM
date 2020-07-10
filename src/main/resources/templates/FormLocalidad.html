@@ -10,13 +10,13 @@
     <!-- CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link th:href="@{/static/css/estilos.css}" rel="stylesheet" />
+    <link th:href="@{/css/estilos.css}" rel="stylesheet" />
 </head>
 
 <body>
     <!--Comienza header-->
     <header>
-        <img class="logo" src="../static/img/logo-header.png" alt="logo" height="75" width="550">
+        <img class="logo" th:src="@{/img/logo-header.png}" alt="logo" height="75" width="550">
         <nav>
             <ul class="nav__links">
                 <li><a href="#">Tripulante</a></li>
@@ -30,11 +30,12 @@
     <!--Comienza cuerpo de body-->
     <div class="container">
         <br>
-        <h1>GESTION DE TRIPULANTES</h1>
-        <form th:object=${tripulanteD} th:action="@{/saveTripulante}" method="post">
+        <h1>GESTION DE LOCALIDAD</h1>
+        <form th:object=${localidadD} th:action="@{/saveLocalidad}" method="post">
+        	<input type="hidden" id="identificadorUsuarioHiddenInput" th:field="*{IdLocalidad}"/>
             <div class="form-group row">
                 <label for="inputNombre">Localidad</label> <input type="text" class="form-control" id="inputNombre"
-                    placeholder="Ingrese una localidad" th:field="*{nombres}" required>
+                    placeholder="Ingrese una localidad" th:field="*{nombre}" required>
             </div>
             <div class="form-group">
                 <div class="form-check">
@@ -43,7 +44,7 @@
                         ¿Aceptas los términos y condiciones? </label>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Registrarse</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
         <br>
     </div>
