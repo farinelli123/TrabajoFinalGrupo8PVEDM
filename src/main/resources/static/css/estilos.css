@@ -125,6 +125,10 @@ TODOS LOS CONTAINER
   transform: scale(0);
 }
 
+/*TEST*/
+input {
+  background-color: white;
+}
 
 /*ESTILOS FOOTER*/
 .site-footer

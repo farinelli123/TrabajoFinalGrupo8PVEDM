@@ -12,14 +12,16 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
 	crossorigin="anonymous">
-<link rel="stylesheet" th:href="@{css/estilos.css}">
+<link rel="stylesheet" th:href="@{css/estilos.css}"
+	href="../static/css/estilos.css">
 </head>
 
 <body>
 	<!--Comienza header-->
 	<header>
-		<img class="logo" th:src="@{/img/logo-header.png}" alt="logo"
-			height="75" width="550">
+		<img class="logo" th:src="@{/img/logo-header.png}"
+			src="../static/img/logo-header.png" alt="logo" height="75"
+			width="550">
 		<nav>
 			<ul class="nav__links">
 				<li><a href="#">Tripulante</a></li>
@@ -50,14 +52,24 @@
 		<br>
 
 		<hr class="my-4">
-		<p class="lead">Seleccione una de las dos opciones y la pagina lo
-			redireccionará a sus respectivos formularios.</p>
+		<p class="lead">* Seleccione una de las dos opciones y la pagina
+			lo redireccionará a sus respectivos formularios.</p>
 		<p class="lead">
-			<a class="btn btn-primary btn-lg" href="#" role="button">Buscar
-				vehiculo por localidad</a> <a class="btn btn-success btn-lg" href="#"
-				role="button">Listado por tripulante</a> <a
-				class="btn btn-primary btn-lg" href="#" role="button">Listado
-				por patente</a>
+			<br> <a class="button_1" th:href="@{/nuevoTripulante}" href="#">
+				Ver vehiculo por localidad y F-H </a>
+			<!--<a class="btn btn-primary btn-lg" href="#" role="button">Buscar
+				vehiculo por localidad</a>-->
+			<br> <br> <br> <a class="button_1"
+				th:href="@{/nuevoTripulante}" href="#"> Ver recorrido por
+				tripulante ordenado por F-H</a>
+			<!--<a class="btn btn-success btn-lg" href="#"
+				role="button">Listado por tripulante</a> -->
+			<br> <br> <br> <a class="button_1"
+				th:href="@{/nuevoTripulante}" href="#"> Ver recorrido por
+				patente ordenado por F-H</a>
+			<!--<a class="btn btn-primary btn-lg" href="#" role="button">Listado
+				por patente</a>-->
+			<br> <br>
 		</p>
 		<p>Le pedimos porfavor que respete las normas de bio-seguridad que
 			le sean asignadas. Entre todos vamos a parar al bicho.</p>
