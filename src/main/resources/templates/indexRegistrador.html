@@ -27,13 +27,17 @@
 				<li><a href="#">Vehiculo</a></li>
 			</ul>
 		</nav>
-		<ul class="navbar-nav mt-2 mt-lg-0">
+		<!--<ul class="navbar-nav mt-2 mt-lg-0">
 			<li class="nav-item"><a class="btn btn-outline-dark" href="#"
 				th:href="@{/logout}"> <span
 					th:text="${#authentication.getPrincipal().getUsername()}"> </span>
 					- <span> Salir </span><span class="float-right"> <i
 						class="fas fa-sign-out-alt"></i></span></a></li>
-		</ul>
+		</ul>-->
+		<a class="cta" href="#" th:href="@{/logout}"><button>
+				<span th:text=${#authentication.getPrincipal().getUsername()}></span>
+				- Salir
+			</button></a>
 	</header>
 	<!--Termina header-->
 	<!--Contenido de body-->

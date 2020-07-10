@@ -38,7 +38,7 @@
 					sesión</button>
 
 				<!--<a class="text-darkyellow" href="#"><small>Olvidó su contraseña?</small></a>-->
-				<!--<a class="text-darkyellow" href="#"><small>Sign Up</small></a>-->
+				<a class="text-darkyellow" th:href="@{/nuevoUsuario}"><small>Crear cuenta</small></a>
 			</form>
 			<div th:if="${param.error}" class="alert alert-danger" role="alert">
 				Combinación Invalida de Usuario y Contraseña</div>

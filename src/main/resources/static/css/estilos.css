@@ -6,7 +6,7 @@
   background-color: #24252A;
 }
 
-li, a, button {
+li, a, button, div{
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -57,7 +57,7 @@ button:hover {
   background-color: rgba(0,136, 169,0.8);
 }
 
-h1, tr, th {
+h1, tr, th{
    color: white; 
 }
 
@@ -65,3 +65,4 @@ h1, tr, th {
   position: absolute;
   color: white;
 }
+
