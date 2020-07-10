@@ -33,7 +33,7 @@ public class TripulanteController {
 	public String guardarTripulante(@Valid @ModelAttribute("tripulanteD") Tripulante tripulante, Model model) {
 		System.out.println(tripulante.getApellido());
 		tripulanteService.guardarTripulante(tripulante);
-		return "redirect:/listarTripulante";
+		return "redirect:/agregarRegistro";
 	}
 	@GetMapping("/listarTripulante")
 	public String listarTripulante(Model model) {
