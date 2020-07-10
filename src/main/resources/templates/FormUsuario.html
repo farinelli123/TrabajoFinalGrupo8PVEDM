@@ -25,12 +25,12 @@
 				<li><a href="#">Vehiculo</a></li>
 			</ul>
 		</nav>
-		<ul class="navbar-nav mt-2 mt-lg-0">
+		<!--<ul class="navbar-nav mt-2 mt-lg-0">
 			<li class="nav-item"><a class="btn btn-outline-dark" href="#"
 				th:href="@{/logout}"> <span
 					th:text="${#authentication.getPrincipal().getUsername()}"> </span>
 					- <span> Salir </span><span class="float-right"> <i
-						class="fas fa-sign-out-alt"></i></span></a></li>
+						class="fas fa-sign-out-alt"></i></span></a></li>-->
 		</ul>
 	</header>
 	<!--Termina header-->
@@ -40,12 +40,12 @@
 		<br>
 		<h1>GESTION DE USUARIOS</h1>
 		<br>
-		<form th:object=${usuarioD} th:action="${editMode}?@{/editarUsuario}" th:action@{/saveUsuario} method="post" >
+		<form th:object=${usuarioD} th:action=@{/saveUsuario} method="post" >
 		    <input type="hidden" id="identificadorUsuarioHiddenInput" th:field="*{IdUsuario}"/>
 		    <input class="form-control" type=hidden th:field="${usuarioD.idUsuario}" th:if="${editMode}">
 		    <input class="form-control" type=hidden th:field="${usuarioD.password}" th:if="${editMode}">
 		    <input class="form-control" type=hidden th:field="${usuarioD.tipoUsuario}" th:if="${editMode}">
-			<div class="form-group row">
+			<div class="form-group row" th:if="${editMode==null or editMode==false}">
 				<label for="nombre" class="col-sm-3 col-form-label">Ingrese
 					su Usuario</label>
 				<div class="col-sm-9">
@@ -54,7 +54,7 @@
 						th:field="*{nombreUsuario}" required>
 				</div>
 			</div>
-			<div class="form-group row">
+			<div class="form-group row" th:if="${editMode==null or editMode==false}">
 				<label for="contraseña" class="col-sm-3 col-form-label">Contraseña</label>
 				<div class="col-sm-9">
 					<input type="password" class="form-control" id="contraseña"
@@ -109,7 +109,7 @@
 						¿Aceptas los terminos y condiciones? </label>
 				</div>
 			</div>
-			<button type="submit" value="Guardar" class="btn btn-primary">Agregar
+			<button type="submit" value="Guardar"  class="btn btn-primary">Agregar
 				Usuario</button>
 		</form>
 	</div>

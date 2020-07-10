@@ -26,7 +26,7 @@ public class TripulanteController {
 		if (!model.containsAttribute("tripulanteD")){
 			model.addAttribute("tripulanteD", new Tripulante());
 		}
-		return "FormUsuario";
+		return "FormTripulante";
 	}
 
 	@PostMapping("/saveTripulante")

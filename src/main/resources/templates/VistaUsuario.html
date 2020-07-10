@@ -25,13 +25,13 @@
 				<li><a href="#">Vehiculo</a></li>
 			</ul>
 		</nav>
-		<ul class="navbar-nav mt-2 mt-lg-0">
+		<!--  <ul class="navbar-nav mt-2 mt-lg-0">
 			<li class="nav-item"><a class="btn btn-outline-dark" href="#"
 				th:href="@{/logout}"> <span
 					th:text="${#authentication.getPrincipal().getUsername()}"> </span>
 					- <span> Salir </span><span class="float-right"> <i
 						class="fas fa-sign-out-alt"></i></span></a></li>
-		</ul>
+		</ul> -->
 	</header>
 	<!--Termina header-->
 	<!--Comienza cuerpo de body-->
@@ -46,7 +46,6 @@
 					<tr>
 						<th scope="col">ID</th>
 						<th scope="col">Nombre de Usuario</th>
-						<th scope="col">Contraseña</th>
 						<th scope="col">Nombre Real</th>
 						<th scope="col">Apellido Real</th>
 						<th scope="col">Tipo de Usuario</th>
@@ -57,7 +56,6 @@
 					<tr th:each="usuario:${usuarios}">
 						<td th:text="${usuario.idUsuario}"></td>
 						<td th:text="${usuario.nombreUsuario}"></td>
-						<td th:text="${usuario.password}"></td>
 						<td th:text="${usuario.nombreReal}"></td>
 						<td th:text="${usuario.apellidoReal}"></td>
 						<td th:text="${usuario.tipoUsuario}"></td>
