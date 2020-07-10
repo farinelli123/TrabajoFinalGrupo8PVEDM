@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,15 +32,15 @@ public class RegistroTracking implements Serializable{
 	@Column
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private LocalDateTime fechaHora;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "vehiculo_id")
 	private Vehiculo vehiculo;
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "registrotracking_tripulante", 
 	 joinColumns = @JoinColumn(name = "registrotracking_id"), 
 	 inverseJoinColumns = @JoinColumn(name = "tripulante_id"))
 	private List<Tripulante> tripulante;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "localidad_id")
 	private Localidad localidad;
 	@Column

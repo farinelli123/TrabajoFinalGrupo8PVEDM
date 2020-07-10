@@ -11,4 +11,5 @@ public interface ILocalidadService {
 	public void borrarLocalidad(Integer id);
 	public Localidad editar(Integer id) throws Exception;
 	public Localidad listarId(Integer id) throws Exception;
+	public Localidad obtenerLocalidad(Iterable<Localidad> localidad);
 }

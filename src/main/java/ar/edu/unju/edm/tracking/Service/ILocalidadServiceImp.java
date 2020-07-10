@@ -10,7 +10,7 @@ import ar.edu.unju.edm.tracking.repository.ILocalidadRepository;
 public class ILocalidadServiceImp implements ILocalidadService {
 	@Autowired
 	ILocalidadRepository iLocalidadRepository;
-	
+	private Localidad localidadAuxiliar = new Localidad();
 	@Override
 	public void guardarLocalidad(Localidad unaLocalidad) {
 		// TODO Auto-generated method stub
@@ -40,6 +40,12 @@ public class ILocalidadServiceImp implements ILocalidadService {
 	public Localidad listarId(Integer id) throws Exception {
 		// TODO Auto-generated method stub
 		return iLocalidadRepository.findById(id).orElseThrow(()-> new Exception("Error"));
+	}
+
+	@Override
+	public Localidad obtenerLocalidad(Iterable<Localidad> localidad) {
+		// TODO Auto-generated method stub
+		return localidadAuxiliar;
 	}
 	
 }
