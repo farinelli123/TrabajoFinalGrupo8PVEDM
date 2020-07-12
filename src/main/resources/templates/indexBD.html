@@ -12,13 +12,13 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
 	crossorigin="anonymous">
-<link rel="stylesheet" th:href="@{css/estilos.css}">
+<link rel="stylesheet" th:href="@{css/estilos.css}" href="../static/css/estilos.css">
 </head>
 
 <body>
 	<!--Comienza header-->
 	<header>
-		<img class="logo" th:src="@{/img/logo-header.png}" alt="logo"
+		<img class="logo" th:src="@{/img/logo-header.png}" src="../static/img/logo-header.png" alt="logo"
 			height="75" width="550">
 		<nav>
 			<ul class="nav__links">
@@ -42,7 +42,7 @@
 	</header>
 	<!--Termina header-->
 	<!--Contenido de body-->
-	<div style="background: #24252A !important" class="jumbotron">
+	<div style="background: #160011 !important" class="jumbotron">
 		<h1 class="display-4">BIENVENIDO USUARIO BD</h1>
 		<p class="lead">A través de esta plataforma usted podrá acceder a
 			la base de datos que facilita la plataforma por medio de la cual
@@ -54,9 +54,13 @@
 		<p class="lead">Seleccione una de las dos opciones y la pagina lo
 			redireccionará a sus respectivos formularios.</p>
 		<p class="lead">
-			<a class="btn btn-primary btn-lg" href="#" role="button">Ver
-				usuario</a> <a class="btn btn-success btn-lg" href="#" role="button">Ver
-				localidad</a>
+			<br>
+			<a class="button_1" th:href="@{/listarUsuario}" href="#"> Editar usuarios </a>
+			<br>
+			<br>
+			<br> 
+			<a class="button_1" th:href="@{/listarLocalidad}" href="#"> Editar localidades </a>
+			<br>
 		</p>
 		<p>Le pedimos porfavor que respete las normas de bio-seguridad que
 			le sean asignadas. Entre todos vamos a parar al bicho.</p>
@@ -64,8 +68,26 @@
 	<!--Termina contenido de body-->
 
 	<!--Comienza footer-->
-
-	<!--Termina footer-->
+    <footer class="page-footer font-small mdb-color darken-3 pt-4" style="background-color: #131418;">
+        <div class="container" style="background-color: #131418;">
+          <div class="row d-flex justify-content-center" style="background-color: #131418;">
+            <div class="col-md-6" style="background-color: #131418;">
+              <!-- Video -->
+              <div class="embed-responsive embed-responsive-16by9 mb-4" style="background-color: #131418;">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/AUUI9v6xgDc"
+                  allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3" style="background-color: #131418;">© 2020 Grupo 8:
+          <a> Avila, Alvaro - Marañón, Mateo - Ruiz, Matías</a>
+        </div>
+        <!-- Copyright -->
+      
+      </footer>
+    <!-- Termina footer -->
 
 	<!-- JS Bootstrap-->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
