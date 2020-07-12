@@ -71,4 +71,7 @@ public class IVehiculoServiceImp implements IVehiculoService {
 		// TODO Auto-generated method stub
 		return vehiculoAux;
 	}
+	public Integer devolverIdPatente(Vehiculo vehiculo) {
+		return vehiculo.getIdVehiculo();
+	}
 }

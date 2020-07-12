@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.tracking.modelo.Tripulante;
+import ar.edu.unju.edm.tracking.modelo.Vehiculo;
 import ar.edu.unju.edm.tracking.repository.ITripulanteRepository;
 
 @Service
@@ -74,5 +75,8 @@ public class ITripulanteServiceImp implements ITripulanteService {
 		// TODO Auto-generated method stub
 		listadoAux = new ArrayList<>();
 		
+	}
+	public Integer devolverIdTripulante(Tripulante tripulante) {
+		return tripulante.getIdTripulante();
 	}
 }

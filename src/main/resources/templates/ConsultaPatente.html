@@ -73,7 +73,7 @@
                         </thead>
                         <tbody>
                             <tr th:each="registroTrackingO : ${registrosTrackingO}">
-                                <td th:text="${registroTrackingO.idRegistro}"></td>
+                                <td th:text="${registroTrackingO.RegistroId}"></td>
                                 <td th:text="${registroTrackingO.fechaHora}"></td>
                                 <td th:text="${registroTrackingO.vehiculo.patente}"></td>
                                 <td th:text="${registroTrackingO.vehiculo.titular}"></td>
@@ -84,7 +84,7 @@
                         </tbody>
                     </table>
                 </div>
-                <a class="button_1" th:href="@{/consultas}" href="#"> Volver </a>
+                <a class="button_1" th:href="@{/indexConsultor}" href="#"> Volver </a>
                 <br>
             </div>
         </div>
@@ -94,8 +94,8 @@
 			aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
-					<form id="formVehiculo" th:object="${vehiculoD}"
-						th:action="@{/buscarVehiculo}" method="post">
+					<form id="formVehiculo" th:object="${vehiculoO}"
+						th:action="@{/buscarListadoPatente}" method="post">
 						<div class="modal-header">
 							<h5 class="modal-title" id="buscarVehiculoModal">Buscar
 								Patente</h5>
@@ -108,7 +108,7 @@
 							<div class="form-group">
 								<label for="patente">Patente:</label> <input
 									class="form-control" id="patente"
-									th:field="${vehiculoD.patente}"
+									th:field="${vehiculoO.patente}"
 									placeholder="Ingresar patente de Vehiculo"></input>
 							</div>
 						</div>

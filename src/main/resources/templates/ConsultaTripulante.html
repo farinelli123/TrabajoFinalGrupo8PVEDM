@@ -75,7 +75,7 @@
                         </thead>
                         <tbody>
                             <tr th:each="registroTracking : ${oT}">
-                                <td th:text="${registroTracking.idRegistro}"></td>
+                                <td th:text="${registroTracking.registroId}"></td>
                                 <td th:text="${registroTracking.tripulante.nombres}"></td>
                                 <td th:text="${registroTracking.tripulante.apellido}"></td>
                                 <td th:text="${registroTracking.localidad.nombre}"></td>
@@ -85,7 +85,7 @@
 
                         </tbody>
                     </table>
-                    <a class="button_1" th:href="@{/consultas}" href="#"> Volver </a>
+                    <a class="button_1" th:href="@{/indexConsultor}" href="#"> Volver </a>
                     <br>
                 </div>
             </div>
@@ -98,7 +98,7 @@
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<form id="formTripulante" th:object="${tripulanteD}"
-						th:action="@{/buscarTripulante}" method="post">
+						th:action="@{/buscarListadoTripulante}" method="post">
 						<div class="modal-header">
 							<h5 class="modal-title" id="buscarTripulanteModal">Buscar
 								Tripulante</h5>

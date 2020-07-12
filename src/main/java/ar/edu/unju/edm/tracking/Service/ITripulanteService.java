@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.tracking.modelo.Tripulante;
+import ar.edu.unju.edm.tracking.modelo.Vehiculo;
 
 @Service
 public interface ITripulanteService  {
@@ -18,4 +19,6 @@ public interface ITripulanteService  {
 	public Tripulante buscarTripulante(String documento) throws Exception;
 	public void borrarTripulantesLista();
 	public List<Tripulante> buscarTodosLosTripulantes();
+	
+	public Integer devolverIdTripulante(Tripulante tripulante);
 }

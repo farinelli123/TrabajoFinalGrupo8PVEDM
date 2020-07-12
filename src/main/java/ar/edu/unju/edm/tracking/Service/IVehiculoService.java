@@ -18,4 +18,6 @@ public interface IVehiculoService {
 	public void borrarVehiculosLista();
 	public List<Vehiculo> buscarTodosLosVehiculos();
 	public Vehiculo obtenerVehiculo(Vehiculo vehiculo);
+	
+	public Integer devolverIdPatente(Vehiculo vehiculo);
 }

@@ -24,4 +24,12 @@ public class MainController {
 	public String ingresaregistrador (Model model) {
 		return "indexRegistrador";
 	}
+	@GetMapping("/consultaPatente")
+	public String ingresarConsultaPatente (Model model) {
+		return "ConsultaPatente";	
+	}
+	@GetMapping("/consultaTripulante")
+	public String ingresarConsultatripulante (Model model) {
+		return "ConsultaTripulante";	
+	}
 }
