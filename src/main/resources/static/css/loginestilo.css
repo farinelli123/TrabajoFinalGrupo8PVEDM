@@ -1,3 +1,7 @@
+* {
+    background-color:#160011; /*#24252A*/
+}
+
 html {
     height: 100%;
 }
@@ -7,6 +11,7 @@ body {
     margin: 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    
 }
 
 .text-c {
@@ -30,7 +35,7 @@ body {
 }
 
 .text-darkyellow {
-    color: rgba(255, 235, 59, 0.432)
+    color: #03a9f4;
 }
 
 .line-b {
@@ -42,8 +47,8 @@ body {
 }
 
 .form-button {
-    background-color: rgba(255, 235, 59, 0.24);
-    border-color: rgba(255, 235, 59, 0.24);
+    background-color: #160011;
+    border-color: #03a9f4;
     color: #e6e6e6;
 }
 
@@ -55,8 +60,8 @@ body {
 .form-button:active:hover,
 .form-button.active:hover,
 .form-button.active:focus {
-    background-color: rgba(255, 235, 59, 0.473);
-    border-color: rgba(255, 235, 59, 0.473);
+    background-color: #03a9f4;
+    border-color: #03a9f4;
     color: #e6e6e6;
 }
 
@@ -159,7 +164,7 @@ body {
 
 .form-control:focus,
 .border-line:focus {
-    border-color: #FFEB3B;
+    border-color: #03a9f4;
     background-color: #616161;
     color: #e6e6e6;
 }
@@ -172,19 +177,20 @@ body {
 .form-control::-webkit-input-placeholder { color: #BDBDBD; }
 
 .container-content {
-    background-color: #3a3a3aa2;
+    background-color: #160011;/*#3a3a3aa2;*/
     color: inherit;
     padding: 15px 20px 20px 20px;
-    border-color: #FFEB3B;
+    border-color: #03a9f4;
     border-image: none;
     border-style: solid solid none;
     border-width: 1px 0;
+    
 }
 
 .main-bg {
 
-    background: #424242;
-    background: linear-gradient( #424242, #212121);
+    background: #160011;
+    background: linear-gradient( #160011    , #212121);
 }
 
 .login-container {

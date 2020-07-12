@@ -24,9 +24,9 @@
 			width="550">
 		<nav>
 			<ul class="nav__links">
-				<li><a href="#">Tripulante</a></li>
-				<li><a href="#">Usuario</a></li>
-				<li><a href="#">Vehiculo</a></li>
+				<li><a th:href="@{/login}">Tripulante</a></li>
+				<li><a th:href="@{/login}">Usuario</a></li>
+				<li><a th:href="@{/login}">Vehiculo</a></li>
 			</ul>
 		</nav>
 		<!--<ul class="navbar-nav mt-2 mt-lg-0">
@@ -43,7 +43,7 @@
 	</header>
 	<!--Termina header-->
 	<!--Contenido de body-->
-	<div style="background: #24252A !important" class="jumbotron">
+	<div style="background: #160011 !important" class="jumbotron">
 		<h1 class="display-4">BIENVENIDO CONSULTOR</h1>
 		<p class="lead">A través de esta plataforma usted, el usuario
 			consultor, podrá realizar la búsqueda de vehículos por localidad, un
@@ -77,8 +77,26 @@
 	<!--Termina contenido de body-->
 
 	<!--Comienza footer-->
-
-	<!--Termina footer-->
+    <footer class="page-footer font-small mdb-color darken-3 pt-4" style="background-color: #131418;">
+        <div class="container" style="background-color: #131418;">
+          <div class="row d-flex justify-content-center" style="background-color: #131418;">
+            <div class="col-md-6" style="background-color: #131418;">
+              <!-- Video -->
+              <div class="embed-responsive embed-responsive-16by9 mb-4" style="background-color: #131418;">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/AUUI9v6xgDc"
+                  allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3" style="background-color: #131418;">© 2020 Grupo 8:
+          <a> Avila, Alvaro - Marañón, Mateo - Ruiz, Matías</a>
+        </div>
+        <!-- Copyright -->
+      
+      </footer>
+    <!-- Termina footer -->
 
 	<!-- JS Bootstrap-->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

@@ -25,18 +25,15 @@
 				<li><a href="#">Vehiculo</a></li>
 			</ul>
 		</nav>
-		<!--<ul class="navbar-nav mt-2 mt-lg-0">
-			<li class="nav-item"><a class="btn btn-outline-dark" href="#"
-				th:href="@{/logout}"> <span
-					th:text="${#authentication.getPrincipal().getUsername()}"> </span>
-					- <span> Salir </span><span class="float-right"> <i
-						class="fas fa-sign-out-alt"></i></span></a></li>-->
-		</ul>
+		<a class="cta" href="#" th:href="@{/logout}"><button>
+				<span th:text=${#authentication.getPrincipal().getUsername()}></span>
+				- Salir
+			</button></a>
 	</header>
 	<!--Termina header-->
 	
 	<!--Comienza cuerpo de body-->
-	<div class="container">
+	<div class="containerc">
 		<br>
 		<h1>GESTION DE USUARIOS</h1>
 		<br>
@@ -102,15 +99,12 @@
 					</div>
 				</div>
 			</fieldset>
-			<div class="form-group">
-				<div class="form-check">
-					<input class="form-check-input" type="checkbox" id="gridCheck"
-						required> <label class="form-check-label" for="gridCheck">
-						¿Aceptas los terminos y condiciones? </label>
-				</div>
-			</div>
-			<button type="submit" value="Guardar"  class="btn btn-primary">Agregar
+			<br>
+			<button type="submit" value="Guardar"  class="button_1">Agregar
 				Usuario</button>
+			<br>
+			<br>
+			<br>
 		</form>
 	</div>
 	<!--Termina contenido de body-->
@@ -133,7 +127,6 @@
           <a> Avila, Alvaro - Marañón, Mateo - Ruiz, Matías</a>
         </div>
         <!-- Copyright -->
-      
       </footer>
     <!-- Termina footer -->
 	

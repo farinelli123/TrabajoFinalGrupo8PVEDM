@@ -119,3 +119,12 @@ h1, tr, th {
 input {
   background-color: white;
 }
+
+/*OJO, ARREGLO PARA EVITAR APARICION DE LINEA FEA QUE SEPARA BODY DE FOOTER SI ES MUY GRANDE TAPA PARTES DE BODY*/
+footer{
+	margin-top:-40px;
+}
+
+.containerf{
+  text-align: center;
+}

@@ -34,7 +34,7 @@
 		<nav>
 			<ul class="nav__links">
 				<li><a th:href="@{/nuevoTripulante}">Tripulante</a></li>
-				<li><a th:href="@{/nuevoUsuario}">Usuario</a></li>
+				<li><a th:href="@{/nuevaLocalidad}">Localidad</a></li>
 				<li><a th:href="@{/nuevoVehiculo}">Vehiculo</a></li>
 			</ul>
 		</nav>
@@ -209,7 +209,7 @@
                                 <label class="font-weight-bold">Ingrese la localidad:</label>
                                 <select class="form-control" th:field="${RegistroTrackingD.localidad.idLocalidad}">
                                     <option th:each="localidad:${localidades}" th:value="${localidad.idLocalidad}"
-                                        th:text="${localidad.nombre}"></option>
+                                        th:text="${localidad.nombre}" style="background-color: white;"></option>
                                 </select>
                             </div>
                         </div>

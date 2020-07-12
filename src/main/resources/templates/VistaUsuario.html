@@ -25,21 +25,23 @@
 				<li><a href="#">Vehiculo</a></li>
 			</ul>
 		</nav>
-		<!--  <ul class="navbar-nav mt-2 mt-lg-0">
-			<li class="nav-item"><a class="btn btn-outline-dark" href="#"
-				th:href="@{/logout}"> <span
-					th:text="${#authentication.getPrincipal().getUsername()}"> </span>
-					- <span> Salir </span><span class="float-right"> <i
-						class="fas fa-sign-out-alt"></i></span></a></li>
-		</ul> -->
+		<a class="cta" href="#" th:href="@{/logout}"><button>
+				<span th:text=${#authentication.getPrincipal().getUsername()}></span>
+				- Salir
+			</button></a>
 	</header>
 	<!--Termina header-->
 	<!--Comienza cuerpo de body-->
-	<div class="container">
+	<div class="containerf">
 		<br>
 		<h1>LISTADO DE USUARIOS</h1>
-		<br> <a th:href="@{/nuevoUsuario}" class="btn btn-primary">
-			Agregar nuevo </a> <br> <br>
+		<br>
+		<br> 
+		<a class="button_1"
+			th:href="@{/nuevoUsuario}" href="#"> Agregar nuevo </a>
+		<!--<a th:href="@{/nuevoUsuario}" class="btn btn-primary">
+			Agregar nuevo </a>-->
+		<br> <br>
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
@@ -68,6 +70,7 @@
 				</tbody>
 			</table>
 		</div>
+		<br>
 	</div>
 	<!--Termina contenido de body-->
 	

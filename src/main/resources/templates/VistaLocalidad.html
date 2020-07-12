@@ -16,7 +16,7 @@
 <body>
 	<!--Comienza header-->
 	<header>
-		<img class="logo" src="../static/img/logo-header.png" alt="logo"
+		<img class="logo" th:src="@{/img/logo-header.png}" src="../static/img/logo-header.png" alt="logo"
 			height="75" width="550">
 		<nav>
 			<ul class="nav__links">
@@ -32,12 +32,15 @@
 	</header>
 	<!--Termina header-->
 	<!--Comienza cuerpo de body-->
-	<div class="container">
+	<div class="containerf">
 		<br>
 		<h1>LISTADO DE LOCALIDADES</h1>
-
-		<br> <a th:href="@{/nuevaLocalidad}" class="btn btn-primary">
-			Agregar nueva </a> <br> <br>
+		<br>
+		<br> 
+		<a class="button_1"
+			th:href="@{/nuevaLocalidad}" href="#"> Agregar nueva </a>
+		<!--<a th:href="@{/nuevaLocalidad}" class="btn btn-primary">Agregar nueva </a>-->
+		<br> <br>
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
@@ -60,6 +63,7 @@
 				</tbody>
 			</table>
 		</div>
+		<br>
 	</div>
 	<!--Termina contenido de body-->
 
