@@ -18,6 +18,7 @@ public class IVehiculoServiceImp implements IVehiculoService {
 	@Override
 	public void guardarVehiculo(Vehiculo unVehiculo) {
 		// TODO Auto-generated method stub
+		borrarVehiculosLista();
 		iVehiculoRepository.save(unVehiculo);
 		vehiculoAux = unVehiculo;
 	}

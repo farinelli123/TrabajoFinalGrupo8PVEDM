@@ -16,37 +16,10 @@ function eliminart(id) {
 				},			
 			  });
 		    swal(" Registro eliminado!", {
-		      icon: "success",
+		      icon: "error",
 		    }).then((ok)=>{
 		    	if(ok){
 		    		location.href="/listarTripulante";
-		    	}
-		    });
-		  } 
-		});
-}
-function eliminaru(id) {
-	console.log(id);
-	swal({
-		  title: "Esta seguro de Eliminar?",
-		  text: "Una vez eliminado no se prodra restablecer!",
-		  icon: "warning",
-		  buttons: true,
-		  dangerMode: true,
-		})
-		.then((OK) => {
-		  if (OK) {
-			  $.ajax({
-				 url:"/deleteUsuario/"+id,
-				 success: function(res) {
-					console.log(res);
-				},			
-			  });
-		    swal(" Registro eliminado!", {
-		      icon: "success",
-		    }).then((ok)=>{
-		    	if(ok){
-		    		location.href="/listarUsuario";
 		    	}
 		    });
 		  } 
@@ -70,7 +43,7 @@ function eliminarv(id) {
 				},			
 			  });
 		    swal(" Registro eliminado!", {
-		      icon: "success",
+		      icon: "error",
 		    }).then((ok)=>{
 		    	if(ok){
 		    		location.href="/listarVehiculo";
@@ -97,7 +70,7 @@ function eliminarl(id) {
 				},			
 			  });
 		    swal(" Registro eliminado!", {
-		      icon: "success",
+		      icon: "error",
 		    }).then((ok)=>{
 		    	if(ok){
 		    		location.href="/listarLocalidad";
@@ -106,7 +79,33 @@ function eliminarl(id) {
 		  } 
 		});
 }
-
+function eliminaru(id) {
+	console.log(id);
+	swal({
+		  title: "Esta seguro de Eliminar?",
+		  text: "Una vez eliminado no se prodra restablecer!",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((OK) => {
+		  if (OK) {
+			  $.ajax({
+				 url:"/deleteUsuario/"+id,
+				 success: function(res) {
+					console.log(res);
+				},			
+			  });
+		    swal(" Registro eliminado!", {
+		      icon: "error",
+		    }).then((ok)=>{
+		    	if(ok){
+		    		location.href="/listarUsuario";
+		    	}
+		    });
+		  } 
+		});
+}
 
 
 

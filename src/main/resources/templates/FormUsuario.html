@@ -11,24 +11,14 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
 	crossorigin="anonymous">
-<link th:href="@{css/estilos.css}" rel="stylesheet" />
+<link th:href="@{/css/estilos.css}" rel="stylesheet" />
 </head>
 <body>
 	<!--Comienza header-->
 	<header>
 		<img class="logo" th:src="@{/img/logo-header.png}" alt="logo"
 			height="75" width="550">
-		<nav>
-			<ul class="nav__links">
-				<li><a href="#">Tripulante</a></li>
-				<li><a href="#">Usuario</a></li>
-				<li><a href="#">Vehiculo</a></li>
-			</ul>
-		</nav>
-		<a class="cta" href="#" th:href="@{/logout}"><button>
-				<span th:text=${#authentication.getPrincipal().getUsername()}></span>
-				- Salir
-			</button></a>
+		
 	</header>
 	<!--Termina header-->
 	

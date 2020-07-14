@@ -17,15 +17,9 @@
     <!--Comienza header-->
     <header>
         <img class="logo" th:src="@{/img/logo-header.png}" alt="logo" height="75" width="550">
-        <nav>
-            <ul class="nav__links">
-                <li><a href="#">Tripulante</a></li>
-                <li><a href="#">Usuario</a></li>
-                <li><a href="#">Vehiculo</a></li>
-            </ul>
-        </nav>
+        
         <a class="cta" href="#" th:href="@{/logout}"><button>
-				<span th:text=${#authentication.getPrincipal().getUsername()}></span>
+				<span class="userbutton" th:text=${#authentication.getPrincipal().getUsername()}></span>
 				- Salir
 			</button></a>
     </header>

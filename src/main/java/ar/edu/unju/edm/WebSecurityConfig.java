@@ -26,7 +26,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers(resources).permitAll()
-				.antMatchers("/", "/home", "/saveUsuario", "/listarUsuario", "/nuevoUsuario").permitAll()
+				.antMatchers("/", "/nuevoUsuario", "/saveUsuario").permitAll()
+				//Acceso para registradores
+				.antMatchers("/indexRegistrador", "/agregarRegistro", "/nuevoVehiculo", "/nuevoTripulante", "/buscarTripulante", "/buscarVehiculo").hasAuthority("Registrador")
+				//Acceso para BD
+				.antMatchers("/indexBD", "/listarUsuario", "/editarUsuario/{id}", "/deleteUsuario/{id}", "/nuevaLocalidad", "/listarLocalidad", "/saveLocalidad", "/deleteLocalidad/{id}", "/editarLocalidad/{id}", "/listarVehiculo", "/listarTripulante").hasAuthority("Bd")
+				.antMatchers("/deleteTripulante/{id}", "/deleteVehiculo/{id}").denyAll()
+				//Acceso para consultores
+				.antMatchers("/indexConsultor", "/buscarListadoPatente", "/consultas1").hasAuthority("Consultor")
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()

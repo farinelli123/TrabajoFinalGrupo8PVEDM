@@ -23,7 +23,7 @@
 			</ul>
 		</nav>
 		<a class="cta" href="#" th:href="@{/logout}"><button>
-				<span th:text=${#authentication.getPrincipal().getUsername()}></span>
+				<span class="userbutton" th:text=${#authentication.getPrincipal().getUsername()}></span>
 				- Salir
 			</button></a>
 	</header>

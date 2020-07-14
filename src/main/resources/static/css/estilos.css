@@ -6,6 +6,34 @@
   background-color: #160011; /*#24252A*/
 }
 
+.swal-modal {
+  background-color: #160011;
+}
+
+.swal-text {
+  background-color: #160011;
+  text-align: center;
+  color: white;
+}
+
+.swal-title {
+  background-color: #160011;
+  color: white;
+}
+
+.swal-footer {
+  background-color: #160011;
+  margin-top: 32px;
+  overflow: hidden;
+}
+
+.swal-icon {
+  background-color: transparent; 
+}
+
+.userbutton {
+  background-color: transparent;
+}
 li, a, button, div {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;

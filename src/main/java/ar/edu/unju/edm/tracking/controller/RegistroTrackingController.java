@@ -61,8 +61,8 @@ public class RegistroTrackingController {
 		vehiculoService.borrarVehiculosLista();
 		return "redirect:/agregarRegistro";
 	}
-
-	/**@PostMapping("/buscarTripulante")
+	
+	@PostMapping("/buscarTripulante")
 	public String buscarTripulante(@ModelAttribute Tripulante tripulante, Model model) throws Exception {
 		try {
 			Tripulante tripulanteEncontrado = tripulanteService.buscarTripulante(tripulante.getDocumento());
@@ -80,17 +80,19 @@ public class RegistroTrackingController {
 	@PostMapping("/buscarVehiculo")
 	public String buscarVehiculo(@ModelAttribute Vehiculo vehiculo, Model model) throws Exception {
 		try {
+			vehiculoService.borrarVehiculosLista();
 			Vehiculo vehiculoEncontrado = vehiculoService.buscarVehiculo(vehiculo.getPatente());
 			try {
 				vehiculoService.guardarVehiculoEncontrado(vehiculoEncontrado);
 			} catch (Exception e) {
 				model.addAttribute("FormVehiculoErrorMessage", e.getMessage());
+				vehiculoService.borrarVehiculosLista();
 			}
 		} catch (Exception e) {
 			model.addAttribute("FormVehiculoErrorMessage", e.getMessage());
 		}
 		return crearRegistro(model);
-	}**/
+	}
 
 	@GetMapping("/consultas1")
 	public String consultar1(Model model) {

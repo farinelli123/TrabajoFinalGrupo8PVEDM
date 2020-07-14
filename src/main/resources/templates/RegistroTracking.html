@@ -14,38 +14,28 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" th:href="@{/css/estilos.css}">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-		crossorigin="anonymous"></script>
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+	integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+	crossorigin="anonymous"></script>
 </head>
 
 <body>
 	<!--Comienza header-->
 	<header>
-		<img class="logo" th:src="@{/img/logo-header.png}" alt="logo"
-			height="75" width="550">
-		<nav>
-			<ul class="nav__links">
-				<li><a th:href="@{/nuevoTripulante}">Tripulante</a></li>
-				<li><a th:href="@{/nuevaLocalidad}">Localidad</a></li>
-				<li><a th:href="@{/nuevoVehiculo}">Vehiculo</a></li>
-			</ul>
-		</nav>
-		<!--<ul class="navbar-nav mt-2 mt-lg-0">
-            <li class="nav-item"><a class="btn btn-outline-light" href="#" th:href="@{/logout}"> <span th:text="${#authentication.getPrincipal().getUsername()}"> </span>
-					- <span> Salir </span><span class="float-right"> <i
-						class="fas fa-sign-out-alt"></i></span></a></li>
-		</ul>-->
+		<img class="logo" th:src="@{/img/logo-header.png}"
+			th:href="@{/RegistroTracking}" alt="logo" height="75" width="550">
+
 		<a class="cta" href="#" th:href="@{/logout}"><button>
-				<span th:text=${#authentication.getPrincipal().getUsername()}></span>
-				- Salir
+				<span class="userbutton"
+					th:text=${#authentication.getPrincipal().getUsername()}></span> -
+				Salir
 			</button></a>
 	</header>
 	<!--Termina header-->
@@ -53,15 +43,16 @@
 	<!--Contenido de body-->
 	<div class="container_rt">
 		<h1>REGISTRO TRACKING</h1>
-		<br> <br> <a class="button_1" th:href="@{/nuevoTripulante}"> Agregar Tripulante </a> <br> <br> <br> 
-		<button class="button_1" type="button" data-toggle="modal" data-target="#modalBuscarTripulante">Buscar
-                Tripulante</button>
+		<br> <br> <a class="button_1" th:href="@{/nuevoTripulante}">
+			Agregar Tripulante </a> <br> <br> <br>
+		<button class="button_1" type="button" data-toggle="modal"
+			data-target="#modalBuscarTripulante">Buscar Tripulante</button>
 		<!--  <a type="button" class="button_1" data-toggle="modal"data-target="#modalBuscarTripulante" href="#"> Buscar Tripulante </a>-->
 		<br> <br> <br> <a class="button_1"
 			th:href="@{/nuevoVehiculo}" href="#"> Agregar Vehiculo </a> <br>
-		<br> <br> 
-		<button class="button_1" type="button" data-toggle="modal" data-target="#modalBuscarVehiculo">Buscar
-                Vehiculo</button>
+		<br> <br>
+		<button class="button_1" type="button" data-toggle="modal"
+			data-target="#modalBuscarVehiculo">Buscar Vehiculo</button>
 		<!--<a class="button_1" th:href="@{/buscarTripulante}" href="#"> Buscar Vehiculo </a>-->
 		<br> <br>
 
@@ -74,6 +65,8 @@
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalBuscarTripulante">Buscar
             Tripulante</button>-->
 		<br>
+		
+
 		<div class="card">
 			<div class="card-body">
 				<h5 class="p-3 mb-2 bg-dark text-white card-title">TRIPULANTE/S</h5>
@@ -121,22 +114,22 @@
 						</thead>
 						<tbody>
 							<tr th:each="vehiculo : ${vehiculos}">
-								<td th:text = "${vehiculo.idVehiculo}"></td>
-			      				<td th:text = "${vehiculo.patente}"></td>
-			      				<td th:text = "${vehiculo.color}"></td>
-			      				<td th:text = "${vehiculo.titular}"></td>
-			      				<td th:text = "${vehiculo.marca}"></td>
-			     	 			<td th:text = "${vehiculo.modelo}"></td>
-			      				<td th:text = "${vehiculo.tipo}"></td>
-			      				<td th:text = "${vehiculo.numeroChasis}"></td>
-			      				<td th:text = "${vehiculo.numeroMotor}"></td>
+								<td th:text="${vehiculo.idVehiculo}"></td>
+								<td th:text="${vehiculo.patente}"></td>
+								<td th:text="${vehiculo.color}"></td>
+								<td th:text="${vehiculo.titular}"></td>
+								<td th:text="${vehiculo.marca}"></td>
+								<td th:text="${vehiculo.modelo}"></td>
+								<td th:text="${vehiculo.tipo}"></td>
+								<td th:text="${vehiculo.numeroChasis}"></td>
+								<td th:text="${vehiculo.numeroMotor}"></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
-		 <!--<div class="card">
+		<!--<div class="card">
 			<div class="card-body">
 				<h5 class="p-3 mb-2 bg-dark text-white card-title">VEHICULO</h5>
 				<form id="formRegistro2" th:object="${vehiculo}">
@@ -188,39 +181,44 @@
 			</div>
 		</div>-->
 		<br> <br>
-		<form id="formRegistro" th:object="${registroTrackingD}" th:action="@{/agregarRegistro}" method="post">
+		<form id="formRegistro" th:object="${registroTrackingD}"
+			th:action="@{/agregarRegistro}" method="post">
 			<div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="p-3 mb-2 bg-dark text-white card-title">DETALLES</h5>
-                                <label for="detalle" class="font-weight-bold">Ingrese detalles del lugar:</label>
-                                <textarea class="form-control" id="detalle" rows="3" placeholder="Ingresar detalles del lugar" th:field="${RegistroTrackingD.detalleLugarRegistro}"> </textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="p-3 mb-2 bg-dark text-white card-title">LOCALIDAD</h5>
-                                <label class="font-weight-bold">Ingrese la localidad:</label>
-                                <select class="form-control" th:field="${RegistroTrackingD.localidad.idLocalidad}">
-                                    <option th:each="localidad:${localidades}" th:value="${localidad.idLocalidad}"
-                                        th:text="${localidad.nombre}" style="background-color: white;"></option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--<button type="submit" class="btn btn-primary">Agregar Registro</button>-->
-            <br>
-            <br>
-            <button class="button_1" type="submit" >Agregar Registro</button>
-        </form>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="p-3 mb-2 bg-dark text-white card-title">DETALLES</h5>
+								<label for="detalle" class="font-weight-bold">Ingrese
+									detalles del lugar:</label>
+								<textarea class="form-control" id="detalle" rows="3"
+									placeholder="Ingresar detalles del lugar"
+									th:field="${RegistroTrackingD.detalleLugarRegistro}"> </textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="p-3 mb-2 bg-dark text-white card-title">LOCALIDAD</h5>
+								<label class="font-weight-bold">Ingrese la localidad:</label> <select
+									class="form-control"
+									th:field="${RegistroTrackingD.localidad.idLocalidad}">
+									<option th:each="localidad:${localidades}"
+										th:value="${localidad.idLocalidad}"
+										th:text="${localidad.nombre}" style="background-color: white;"></option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--<button type="submit" class="btn btn-primary">Agregar Registro</button>-->
+			<br> <br>
+			<button class="button_1" type="submit">Agregar Registro</button>
+		</form>
 		<br>
 		<div class="modal fade" id="modalBuscarTripulante" tabindex="-1"
 			role="dialog" aria-labelledby="buscarTripulanteModal"
@@ -287,35 +285,43 @@
 					</form>
 				</div>
 			</div>
+			<div class="alert alert-danger"
+			th:if="${formTripulanteErrorMessage}"
+			th:text="${formTripulanteErrorMessage}">Name Error</div>
+			<div class="alert-danger text-center"
+				th:if="${formVehiculoErrorMessage}"
+				th:text="${formVehiculoErrorMessage}">Name Error</div>
 		</div>
 		<br> <br>
-		<div class="alert-danger text-center" th:if="${formTripulanteErrorMessage}" th:text="${formTripulanteErrorMessage}">Name Error</div>
-		<div class="alert-danger text-center" th:if="${formVehiculoErrorMessage}" th:text="${formVehiculoErrorMessage}">Name Error</div>
 	</div>
-	
+
 	<!--Termina contenido de body-->
 
 	<!--Comienza footer-->
-    <footer class="page-footer font-small mdb-color darken-3 pt-4" style="background-color: #131418;">
-        <div class="container" style="background-color: #131418;">
-          <div class="row d-flex justify-content-center" style="background-color: #131418;">
-            <div class="col-md-6" style="background-color: #131418;">
-              <!-- Video -->
-              <div class="embed-responsive embed-responsive-16by9 mb-4" style="background-color: #131418;">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/AUUI9v6xgDc"
-                  allowfullscreen></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3" style="background-color: #131418;">© 2020 Grupo 8:
-          <a> Avila, Alvaro - Marañón, Mateo - Ruiz, Matías</a>
-        </div>
-        <!-- Copyright -->
-      
-      </footer>
-    <!-- Termina footer -->
+	<footer class="page-footer font-small mdb-color darken-3 pt-4"
+		style="background-color: #131418;">
+		<div class="container" style="background-color: #131418;">
+			<div class="row d-flex justify-content-center"
+				style="background-color: #131418;">
+				<div class="col-md-6" style="background-color: #131418;">
+					<!-- Video -->
+					<div class="embed-responsive embed-responsive-16by9 mb-4"
+						style="background-color: #131418;">
+						<iframe class="embed-responsive-item"
+							src="https://www.youtube.com/embed/AUUI9v6xgDc" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Copyright -->
+		<div class="footer-copyright text-center py-3"
+			style="background-color: #131418;">
+			© 2020 Grupo 8: <a> Avila, Alvaro - Marañón, Mateo - Ruiz, Matías</a>
+		</div>
+		<!-- Copyright -->
+
+	</footer>
+	<!-- Termina footer -->
 
 	<!-- JS Bootstrap-->
 </body>
