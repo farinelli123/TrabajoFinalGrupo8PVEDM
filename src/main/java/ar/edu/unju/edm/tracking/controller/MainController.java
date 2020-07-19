@@ -32,4 +32,8 @@ public class MainController {
 	public String ingresarConsultatripulante (Model model) {
 		return "ConsultaTripulante";	
 	}
+	@GetMapping("/error")
+	public String errar(Model model) {
+		return "error";
+	}
 }
