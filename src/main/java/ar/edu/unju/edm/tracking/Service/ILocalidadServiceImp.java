@@ -47,5 +47,16 @@ public class ILocalidadServiceImp implements ILocalidadService {
 		// TODO Auto-generated method stub
 		return localidadAuxiliar;
 	}
+
+	@Override
+	public Localidad buscarLocalidad(String nombre) throws Exception {
+		return iLocalidadRepository.findByNombre(nombre).orElseThrow(()-> new Exception("La localidad no existe")) ;
+	}
+
+	@Override
+	public Integer devolverIdLocalidad(Localidad localidadEncontrada) {
+		Localidad localidad = null;
+		return localidad.getIdLocalidad();
+	}
 	
 }

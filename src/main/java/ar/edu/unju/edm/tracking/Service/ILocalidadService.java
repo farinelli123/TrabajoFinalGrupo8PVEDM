@@ -12,4 +12,6 @@ public interface ILocalidadService {
 	public Localidad editar(Integer id) throws Exception;
 	public Localidad listarId(Integer id) throws Exception;
 	public Localidad obtenerLocalidad(Iterable<Localidad> localidad);
+	public Localidad buscarLocalidad(String nombre) throws Exception;
+	public Integer devolverIdLocalidad(Localidad localidadEncontrada);
 }

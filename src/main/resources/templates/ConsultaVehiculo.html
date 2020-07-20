@@ -22,11 +22,10 @@
 	<header>
 		<img class="logo" th:src="@{/img/logo-header.png}"
 			src="../static/img/logo-header.png" alt="logo" height="75"
-			width="550">
-		
-		<a class="cta" href="#" th:href="@{/logout}"><button>
-				<span class="userbutton" th:text=${#authentication.getPrincipal().getUsername()}></span>
-				- Salir
+			width="550"> <a class="cta" href="#" th:href="@{/logout}"><button>
+				<span class="userbutton"
+					th:text=${#authentication.getPrincipal().getUsername()}></span> -
+				Salir
 			</button></a>
 	</header>
 	<!--Termina header-->
@@ -45,27 +44,23 @@
 						<thead class="thead-light">
 							<tr>
 								<th scope="col">#</th>
-								<th scope="col">Patente</th>
-								<th scope="col">Color</th>
+								<th scope="col">Patente de Vehiculo</th>
 								<th scope="col">Titular</th>
-								<th scope="col">Marca</th>
-								<th scope="col">Modelo</th>
-								<th scope="col">Tipo</th>
-								<th scope="col">NumeroChasis</th>
-								<th scope="col">NumeroMotor</th>
+								<th scope="col">Localidad</th>
+								<th scope="col">Detalles del lugar</th>
+								<th scope="col"></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="vehiculo : ${vehiculos}">
-								<td th:text="${vehiculo.idVehiculo}"></td>
-								<td th:text="${vehiculo.patente}"></td>
-								<td th:text="${vehiculo.color}"></td>
-								<td th:text="${vehiculo.titular}"></td>
-								<td th:text="${vehiculo.marca}"></td>
-								<td th:text="${vehiculo.modelo}"></td>
-								<td th:text="${vehiculo.tipo}"></td>
-								<td th:text="${vehiculo.numeroChasis}"></td>
-								<td th:text="${vehiculo.numeroMotor}"></td>
+							<tr th:each="registroTrackingO : ${registrosTrackingOL}">
+								<td th:text="${registroTrackingO.idRegistro}"></td>
+								<td th:text="${registroTrackingO.vehiculo.patente}"></td>
+								<td th:text="${registroTrackingO.vehiculo.titular}"></td>
+								<td th:text="${registroTrackingO.localidad.nombre}"></td>
+								<td th:text="${registroTrackingO.detalleLugarRegistro}"></td>
+								<td><a class="btn btn-outline-info" href="#"
+									th:href="@{'/buscarListadoLocalidad/'+${registroTrackingO.idRegistro}}">Ver
+										tripulantes</a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -81,8 +76,8 @@
 			aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
-					<form class="form" role="form" autocomplete="off" id="formVehiculo" th:object="${vehiculoD}"
-						th:action="@{/consulta3}" method="post">
+					<form class="form" role="form" autocomplete="off" id="formVehiculo"
+						th:object="${localidadD}" th:action="@{/buscarListadoLocalidad}" method="post">
 						<div class="modal-header">
 							<h5 class="modal-title" id="buscarVehiculoModal">Buscar
 								Vehiculo</h5>
@@ -93,28 +88,21 @@
 						</div>
 						<div class="modal-body">
 							<div class="form-group">
-								<h6>Seleccione una localidad:</h6>
-								<!--<label for="patente">Seleccione una localidad:</label> <input
-									class="form-control" id="patente"
-									th:field="${vehiculoD.patente}"
-                                    placeholder="Ingresar patente de Vehiculo"></input>-->
-								<select class="form-control"
-									th:field="${RegistroTrackingD.localidad.idLocalidad}">
-									<option th:each="localidad:${localidades}"
-										th:value="${localidad.idLocalidad}"
-										th:text="${localidad.nombre}"></option>
-								</select>
+								<label for="localidad">Localidad:</label> <input
+									class="form-control" id="localidad"
+									th:field="${localidadD.nombre}" name="nombre"
+									placeholder="Ingresar nombre de localidad"></input>
 							</div>
 						</div>
-
 						<div class="form-group row">
 							<label for="fecha"
-								class="col-lg-3 col-form-label form-control-label">Fecha1:</label>
+								class="col-lg-3 col-form-label form-control-label">Fecha
+								Ini:</label>
 							<div class="col-lg-9 input-group date" id="datetimepicker1"
 								data-target-input="nearest">
 								<input type="text" class="form-control datetimepicker-input"
-									data-target="#datetimepicker1" id="fecha01" placeholder="Fecha"
-									th:field="${Fecha.fechaH1}" />
+									data-target="#datetimepicker1" id="fecha01"
+									placeholder="Fecha inicial" th:field="${Fecha.fechaH1}" />
 								<div class="input-group-append" data-target="#datetimepicker1"
 									data-toggle="datetimepicker">
 									<div class="input-group-text">
@@ -126,13 +114,13 @@
 
 						<div class="form-group row">
 							<label for="fecha"
-								class="col-lg-3 col-form-label form-control-label">Fecha2:</label>
+								class="col-lg-3 col-form-label form-control-label">Fecha
+								Fin:</label>
 							<div class="col-lg-9 input-group date" id="datetimepicker2"
 								data-target-input="nearest">
 								<input type="text" class="form-control datetimepicker-input"
 									data-target="#datetimepicker2" id="fecha02"
-									placeholder="ingresar Fecha de Alta"
-									th:field="${Fecha.fechaH1}" />
+									placeholder="Fecha final" th:field="${Fecha.fechaH2}" />
 								<div class="input-group-append" data-target="#datetimepicker2"
 									data-toggle="datetimepicker">
 									<div class="input-group-text">
@@ -164,26 +152,30 @@
 	</div>
 	<!--Termina body-->
 	<!--Comienza footer-->
-    <footer class="page-footer font-small mdb-color darken-3 pt-4" style="background-color: #131418;">
-        <div class="container" style="background-color: #131418;">
-          <div class="row d-flex justify-content-center" style="background-color: #131418;">
-            <div class="col-md-6" style="background-color: #131418;">
-              <!-- Video -->
-              <div class="embed-responsive embed-responsive-16by9 mb-4" style="background-color: #131418;">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/AUUI9v6xgDc"
-                  allowfullscreen></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3" style="background-color: #131418;">© 2020 Grupo 8:
-          <a> Avila, Alvaro - Marañón, Mateo - Ruiz, Matías</a>
-        </div>
-        <!-- Copyright -->
-      
-      </footer>
-    <!-- Termina footer -->
+	<footer class="page-footer font-small mdb-color darken-3 pt-4"
+		style="background-color: #131418;">
+		<div class="container" style="background-color: #131418;">
+			<div class="row d-flex justify-content-center"
+				style="background-color: #131418;">
+				<div class="col-md-6" style="background-color: #131418;">
+					<!-- Video -->
+					<div class="embed-responsive embed-responsive-16by9 mb-4"
+						style="background-color: #131418;">
+						<iframe class="embed-responsive-item"
+							src="https://www.youtube.com/embed/AUUI9v6xgDc" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Copyright -->
+		<div class="footer-copyright text-center py-3"
+			style="background-color: #131418;">
+			© 2020 Grupo 8: <a> Avila, Alvaro - Marañón, Mateo - Ruiz, Matías</a>
+		</div>
+		<!-- Copyright -->
+
+	</footer>
+	<!-- Termina footer -->
 	<!-- JS Bootstrap-->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

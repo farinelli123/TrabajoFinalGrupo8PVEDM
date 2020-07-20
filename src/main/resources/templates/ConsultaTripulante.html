@@ -53,22 +53,34 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nombres</th>
-                                <th scope="col">Apellido</th>
+                                <!--  <th scope="col">Nombres</th>
+                                <th scope="col">Apellido</th> -->
+                                <th scope="col">Vehiculo Patente</th>
+			      		        <th scope="col">Vehiculo Titular</th>
+			      		        <th scope="col">Apellido Tripulante</th>
                                 <th scope="col">Localidad</th>
                                 <th scope="col">Fecha y Hora</th>
                                 <th scope="col">Detalles del lugar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="registroTracking : ${oT}">
+                            <!--  <tr th:each="registroTracking : ${oT}">
                                 <td th:text="${registroTracking.registroId}"></td>
                                 <td th:text="${registroTracking.tripulante.nombres}"></td>
                                 <td th:text="${registroTracking.tripulante.apellido}"></td>
                                 <td th:text="${registroTracking.localidad.nombre}"></td>
                                 <td th:text="${registroTracking.fechaHora}"></td>
                                 <td th:text="${registroTracking.detalleLugarRegistro}"></td>
-                            </tr>
+                            </tr>  -->
+                        <tr th:each="registroTrackingCD : ${registrosTrackingCD}">
+					      <td th:text = "${registroTrackingCD.registroId}"></td>
+					      <td th:text = "${registroTrackingCD.vehiculo.patente}"></td>
+					      <td th:text = "${registroTrackingCD.vehiculo.titular}"></td>
+					      <td th:text = "${registroTrackingCD.tripulante.apellido}"></td> 
+					      <td th:text = "${registroTrackingCD.localidad.nombre}"></td>
+					      <td th:text = "${registroTrackingCD.fechaHora}"></td>
+					      <td th:text = "${registroTrackingCD.detalleLugarRegistro}"></td>
+					</tr>    
 
                         </tbody>
                     </table>

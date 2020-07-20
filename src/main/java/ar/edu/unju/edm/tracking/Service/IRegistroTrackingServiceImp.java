@@ -8,6 +8,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.edm.tracking.modelo.Fecha;
+import ar.edu.unju.edm.tracking.modelo.Localidad;
 import ar.edu.unju.edm.tracking.modelo.RegistroTracking;
 import ar.edu.unju.edm.tracking.modelo.Tripulante;
 import ar.edu.unju.edm.tracking.modelo.Vehiculo;
@@ -18,7 +20,9 @@ public class IRegistroTrackingServiceImp implements IRegistroTrackingService {
 	@Autowired
 	IRegistroTrackingRepository iRegistroTrackingRepository;
 	List<Tripulante> tripulante1=new ArrayList<>();
-	//List<Tripulante> tripulanteOrd=(List<Tripulante>) new Tripulante();
+	private List<RegistroTracking> registros = new ArrayList<>();
+	private List<Tripulante> tripulanteS = new ArrayList<>();
+	private Fecha consultaAuxiliar = new Fecha();
 	
 	@Override
 	public void guardarRegistro(RegistroTracking unRegistro) {
@@ -32,27 +36,18 @@ public class IRegistroTrackingServiceImp implements IRegistroTrackingService {
 		List<RegistroTracking> registros = iRegistroTrackingRepository.findByvehiculoOrderByFechaHoraAsc(vehiculo);
 		return registros;
 	}
-	//@Override
-	//public List<RegistroTracking> obtenerRegistrosT(Tripulante tripulante) {
-	//	List<RegistroTracking> registros = iRegistroTrackingRepository.findBytripulanteOrderByFechaHoraAsc(tripulante);
-	//	return registros;
-	//}
+
 	@Override
 	public void guardarTripulanteEncontrado(Tripulante unTripulante) {
 		// TODO Auto-generated method stub
 		tripulante1.add(unTripulante);
 	}
+	
 	//@Override
-	//public Tripulante guardarListaTripulante(Tripulante unTripulante) {
-	//	Tripulante tripulanteOrd=iRegistroTrackingRepository.findAllByOrderByFechaHoraAsc(tripulante);
-	//	return tripulanteOrd;
-	//}
-
-	@Override
-	public List<RegistroTracking> obtenerRegistrosT(Long id) {
+	//public List<RegistroTracking> obtenerRegistrosT(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
-	}
+		//return null;
+	//}
 
 	@Override
 	public List<RegistroTracking> obtenerRegistrosT(Integer id) {
@@ -65,13 +60,49 @@ public class IRegistroTrackingServiceImp implements IRegistroTrackingService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	//@Override
-	//public List<Tripulante> obtenerTripulante() {
-	//	// TODO Auto-generated method stub
-	//	return tripulante;
-	//}
-
-
 	
+	@Override
+	public List<RegistroTracking> obtenerRegistrosCD(Tripulante tripulante) {		
+		registros = tripulante.getRegistrosT();
+		return registros;
+	}
+
+	@Override
+	public Fecha obtenerFechas() {
+		return consultaAuxiliar;
+	}
+
+	@Override
+	public List<RegistroTracking> obtenerRegistrosOL(LocalDateTime date1, LocalDateTime date2, Integer id) {
+		List<RegistroTracking> registros = iRegistroTrackingRepository.findByFechaHoraBetween(date1, date2, id);
+		return registros;
+	}
+
+	@Override
+	public RegistroTracking buscarRegistro(Integer id) {
+		return iRegistroTrackingRepository.findByRegistroId(id);
+	}
+
+	@Override
+	public List<Tripulante> obtenerTripulantes(RegistroTracking registroTracking) {
+		tripulanteS = registroTracking.getTripulante();
+		return tripulanteS;
+	}
+
+	@Override
+	public void guardarFechas(Fecha consulta) {
+		consultaAuxiliar = consulta;
+	}
+	
+	/**@Override
+	public RegistroTracking buscarRegistro(Integer id) {
+		return iRegistroTrackingRepository.findByIdRegistro(id);
+	}
+	
+	@Override
+	public List<Tripulante> obtenerTripulantes(RegistroTracking registroTracking) {
+		
+		tripulantes = registroTracking.getTripulantes();
+		return tripulantes;
+	}**/
 }

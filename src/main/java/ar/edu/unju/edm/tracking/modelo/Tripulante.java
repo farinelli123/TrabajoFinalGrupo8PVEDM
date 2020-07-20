@@ -1,18 +1,23 @@
 package ar.edu.unju.edm.tracking.modelo;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
+
 @Entity
 @Component
+@Table(name = "tripulante")
 public class Tripulante implements Serializable {
      /**
 	 * 
@@ -32,15 +37,19 @@ public class Tripulante implements Serializable {
 	@Column
 	private String nacionalidad;
 	
+	@ManyToMany(mappedBy = "tripulante")
+	private List<RegistroTracking> registrosT;
+	
 	public Tripulante() {
 	}
-	public Tripulante(String documento, String apellido, String nombres, String nacionalidad, Integer idTripulante) {
+	public Tripulante(Integer idTripulante, String documento, String apellido, String nombres, String nacionalidad, List<RegistroTracking> registrosT) {
 		super();
 		this.documento = documento;
 		this.apellido = apellido;
 		this.nombres = nombres;
 		this.nacionalidad = nacionalidad;
 		this.idTripulante = idTripulante;
+		this.registrosT = registrosT;
 	}
 	public Integer getIdTripulante() {
 		return idTripulante;
@@ -72,10 +81,18 @@ public class Tripulante implements Serializable {
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}
+	public List<RegistroTracking> getRegistrosT() {
+		return registrosT;
+	}
+	public void setRegistrosT(List<RegistroTracking> registrosT) {
+		this.registrosT = registrosT;
+	}
+	
 	@Override
 	public String toString() {
 		return "Tripulante [idTripulante=" + idTripulante + ", documento=" + documento + ", apellido=" + apellido
-				+ ", nombres=" + nombres + ", nacionalidad=" + nacionalidad + "]";
+				+ ", nombres=" + nombres + ", nacionalidad=" + nacionalidad + ", registrosT="
+						+ registrosT + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -86,6 +103,7 @@ public class Tripulante implements Serializable {
 		result = prime * result + ((idTripulante == null) ? 0 : idTripulante.hashCode());
 		result = prime * result + ((nacionalidad == null) ? 0 : nacionalidad.hashCode());
 		result = prime * result + ((nombres == null) ? 0 : nombres.hashCode());
+		result = prime * result + ((registrosT == null) ? 0 : registrosT.hashCode());
 		return result;
 	}
 	@Override
@@ -121,6 +139,11 @@ public class Tripulante implements Serializable {
 			if (other.nombres != null)
 				return false;
 		} else if (!nombres.equals(other.nombres))
+			return false;
+		if (registrosT == null) {
+			if (other.registrosT != null)
+				return false;
+		} else if (!registrosT.equals(other.registrosT))
 			return false;
 		return true;
 	}

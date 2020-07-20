@@ -30,12 +30,15 @@ public class RegistroTracking implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO,generator="native")
 	@GenericGenerator(name="native",strategy="native")
 	private Integer registroId;
+	
 	@Column
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private LocalDateTime fechaHora;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "vehiculo_id")
 	private Vehiculo vehiculo;
+	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "registrotracking_tripulante", 
 	 joinColumns = @JoinColumn(name = "registrotracking_id"), 
